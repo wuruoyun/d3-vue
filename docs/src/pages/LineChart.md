@@ -6,7 +6,7 @@ Original D3 demo at [https://bl.ocks.org/mbostock/3884955](https://bl.ocks.org/m
 <template>
   <d3-root class="demo" :width="800" :height="450">
     <d3-cartesian :margin="margin" :width="800" :height="450"
-      :axisX="axisX" :axisY="axisY" slot-scope="props" v-bind="props">
+      :axisX="axisX" :axisY="axisY">
       <template slot-scope="props">
         <d3-group v-for="city in cities" :key="city.id">
           <d3-line :data="city.values" x="date" y="temperature"

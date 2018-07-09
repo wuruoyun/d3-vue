@@ -5,8 +5,8 @@ Original D3 demo at [https://bl.ocks.org/mbostock/3885304](https://bl.ocks.org/m
 ```html
 <template>
   <d3-root class="demo" :width="800" :height="450">
-    <d3-cartesian :margin="margin" :width="800" :height="450"
-      :axisX="axisX" :axisY="axisY" slot-scope="props" v-bind="props">
+    <d3-cartesian :width="800" :height="450"
+      :axisX="axisX" :axisY="axisY">
       <d3-bars :data="data" x="letter" y="frequency" slot-scope="props" v-bind="props"/>
     </d3-cartesian>
   </d3-root>
@@ -33,8 +33,7 @@ export default {
         options: {
           ticks: { count: 10, specifier: '%'} 
         }
-      },
-      margin: {top: 20, right: 20, bottom: 30, left: 40}
+      }
     }
   },
   created () {
