@@ -27,19 +27,13 @@
 
 <script>
 import * as d3 from 'd3'
+import Region from '../mixins/Region'
 import Axis from './Axis.vue'
 
 export default {
+  mixins: [ Region ],
   components: { Axis },
   props: {
-    width: {
-      type: Number,
-      default: 600
-    },
-    height: {
-      type: Number,
-      default: 400
-    },
     axisX: {
       type: Object,
       required: true,
@@ -55,26 +49,9 @@ export default {
         const { type, domain } = value
         return type && domain
       }
-    },
-    margin: {
-      type: Object,
-      default: () => {
-        return { top: 20, right: 20, bottom: 30, left: 30 }
-      }
     }
   },
   computed: {
-    transform () {
-      return `translate(${this.margin.left},${this.margin.top})`
-    },
-    contentWidth () {
-      const { left, right } = this.margin
-      return this.width - left - right
-    },
-    contentHeight () {
-      const { top, bottom } = this.margin
-      return this.height - top - bottom
-    },
     domainX () {
       return this.axisX.domain
     },

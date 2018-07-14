@@ -5,7 +5,8 @@
   "author": "wuruoyun <wuruoyun@gmail.com>",
   "private": true,
   "dependencies": {
-    "d3": "^5.5.0"
+    "d3": "^5.5.0",
+    "topojson": "^3.0.2"
   },
   "peerDependencies": {
     "vue": "^2.5.11"

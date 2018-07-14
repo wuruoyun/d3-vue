@@ -1,7 +1,7 @@
 <template>
   <aside class="sidebar">
     <h1>
-      <a class="app-name-link" data-nosearch="" href="/">My Components</a>
+      <a class="app-name-link" data-nosearch="" href="/">D3 Vue</a>
     </h1>
     <div class="sidebar-nav">
       <ul>
@@ -31,11 +31,18 @@ export default {
           ]
         },
         {
-          title: 'Components',
+          title: 'Basic',
           pages: [
             { to: '/bar-chart', title: 'Bar Chart' },
             { to: '/line-chart', title: 'Line Chart' },
+            { to: '/pie-chart', title: 'Pie Chart' },
             { to: '/scatter-plot', title: 'Scatter Plot' }
+          ]
+        },
+        {
+          title: 'Intermediate',
+          pages: [
+            { to: '/choropleth', title: 'Choropleth' }
           ]
         }
       ]

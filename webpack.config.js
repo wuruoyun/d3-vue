@@ -57,7 +57,7 @@ module.exports = {
         loader: 'vue-loader!vue-md-loader'
       },
       {
-        test: /\.(png|jpg|gif|svg|tsv)$/,
+        test: /\.(png|jpg|gif|svg|csv|tsv)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]'

@@ -1,6 +1,6 @@
 <template>
   <footer>
     <hr>
-    <span>©2017 My Organization</span>
+    <span>©2018 D3 Vue</span>
   </footer>
 </template>
