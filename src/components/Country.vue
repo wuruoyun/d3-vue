@@ -1,12 +1,14 @@
 <template>
-  <g ref="country" class="country"></g>
+  <g ref="country" class="country" :transform="transform"></g>
 </template>
 
 <script>
 import * as d3 from 'd3'
 import * as topojson from 'topojson'
+import Region from '../mixins/Region'
 
 export default {
+  mixins: [ Region ],
   props: {
     data: {
       type: Object
@@ -18,6 +20,25 @@ export default {
     titleFn: {
       type: Function,
       required: false
+    },
+    margin: {
+      type: Object,
+      default: () => {
+        return { top: 10, right: 10, bottom: 10, left: 10 }
+      }
+    }
+  },
+  data () {
+    return {
+      scale: 1
+    }
+  },
+  computed: {
+    transform () {
+      const { margin, scale } = this
+      return scale === 1
+        ? `translate(${margin.left},${margin.top})`
+        : `translate(${margin.left},${margin.top})scale(${scale})`
     }
   },
   watch: {
@@ -40,13 +61,19 @@ export default {
         .attr("fill", countyColorFn)
         .attr("d", path)
       if (titleFn) {
-        county.append("title").text(titleFn);
+        county.append("title").text(titleFn)
       }
 
       g.append("path")
         .datum(topojson.mesh(data, data.objects.states, (a, b) => a !== b))
         .attr("class", "states")
-        .attr("d", path);
+        .attr("d", path)
+
+      console.log(this.$refs.country.getBoundingClientRect())
+      const { width, height } = this.$refs.country.getBoundingClientRect()
+      const widthRatio = this.contentWidth / width
+      const heightRatio = this.contentHeight / height
+      this.scale = Math.min(widthRatio, heightRatio)
     }
   },
   mounted () {
