@@ -1,23 +1,32 @@
 export default {
   props: {
     width: {
-      type: Number,
+      type: Number | String,
       default: 600
     },
     height: {
-      type: Number,
+      type: Number | String,
       default: 400
     },
     margin: {
       type: Object,
       default: () => {
-        return { top: 20, right: 20, bottom: 30, left: 30 }
+        return { top: 0, right: 0, bottom: 0, left: 0 }
       }
+    }
+  },
+  data () {
+    return {
+      x: 0,
+      y: 0
     }
   },
   computed: {
     transform () {
-      return `translate(${this.margin.left},${this.margin.top})`
+      const { margin, x, y } = this
+      if (margin.left + x !== 0 || margin.top + y !== 0) {
+        return `translate(${margin.left + x},${margin.top + y})`
+      }
     },
     contentWidth () {
       const { left, right } = this.margin

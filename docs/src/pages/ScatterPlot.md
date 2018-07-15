@@ -4,14 +4,13 @@ Original D3 demo at [https://bl.ocks.org/mbostock/3887118](https://bl.ocks.org/m
 
 ```html
 <template>
-  <d3-root class="demo" :width="800" :height="450">
-    <d3-cartesian :axisX="axisX" :axisY="axisY" :width="800" :height="450">
+  <d3-cartesian class="demo" :width="850" :height="450" :axisX="axisX" :axisY="axisY">
+    <template slot-scope="props">
       <d3-points :data="data" x="sepalWidth" y="sepalLength" :color="colorFn"
-        :size="3.5" slot-scope="props" v-bind="props"/>
-    </d3-cartesian>
-    <d3-legend :data="species" label="name" color="color" align="right"
-      :x="780" :y="20"/>
-  </d3-root>
+        :size="3.5" v-bind="props"/>
+      <d3-legend :data="species" label="name" color="color" align="right" :x="800"/>
+    </template>
+  </d3-cartesian>
 </template>
 
 <script>

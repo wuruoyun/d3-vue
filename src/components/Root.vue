@@ -1,6 +1,6 @@
 <template>
   <svg :width="width" :height="height">
-    <slot/>
+    <slot></slot>
   </svg>
 </template>
 

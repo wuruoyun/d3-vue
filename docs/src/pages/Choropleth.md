@@ -4,9 +4,8 @@ Original D3 demo at [https://bl.ocks.org/mbostock/4060606](https://bl.ocks.org/m
 
 ```html
 <template>
-  <d3-root class="demo" :width="800" :height="500">
-    <d3-country :width="800" :height="500" :data="us" :countyColorFn="colorFn"/>
-  </d3-root>
+  <d3-country class="demo" :width="960" :height="600"
+    :data="us" :countyColorFn="colorFn"/>
 </template>
 
 <script>

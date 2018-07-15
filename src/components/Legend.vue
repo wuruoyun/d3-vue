@@ -35,11 +35,11 @@ export default {
     },
     x: {
       type: Number,
-      default: 10
+      default: 0
     },
     y: {
       type: Number,
-      default: 10
+      default: 0
     },
     align: {
       type: String,

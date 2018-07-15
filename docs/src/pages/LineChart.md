@@ -4,22 +4,20 @@ Original D3 demo at [https://bl.ocks.org/mbostock/3884955](https://bl.ocks.org/m
 
 ```html
 <template>
-  <d3-root class="demo" :width="800" :height="450">
-    <d3-cartesian :margin="margin" :width="800" :height="450"
-      :axisX="axisX" :axisY="axisY">
-      <template slot-scope="props">
-        <d3-group v-for="city in cities" :key="city.id">
-          <d3-line :data="city.values" x="date" y="temperature"
-            :color="city.color" :curveFn ="curveFn" v-bind="props"/>
-          <d3-text :x="props.width + 3"
-            :y="props.scaleY(city.values[city.values.length - 1].temperature)"
-            dy="0.35em" style="font:10px sans-serif;">
-            {{ city.id }}
-          </d3-text>
-        </d3-group>
-      </template>
-    </d3-cartesian>
-  </d3-root>
+  <d3-cartesian :margin="margin" :width="850" :height="450"
+    :axisX="axisX" :axisY="axisY">
+    <template slot-scope="props">
+      <d3-group v-for="city in cities" :key="city.id">
+        <d3-line :data="city.values" x="date" y="temperature"
+          :color="city.color" :curveFn ="curveFn" v-bind="props"/>
+        <d3-text :x="props.width + 3"
+          :y="props.scaleY(city.values[city.values.length - 1].temperature)"
+          dy="0.35em" style="font:10px sans-serif;">
+          {{ city.id }}
+        </d3-text>
+      </d3-group>
+    </template>
+  </d3-cartesian>
 </template>
 
 <script>

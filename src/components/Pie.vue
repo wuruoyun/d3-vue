@@ -1,5 +1,9 @@
 <template>
-  <g class="pie" :transform="transform"></g>
+  <svg class="pie" :width="width" :height="height">
+    <g ref="content" :transform="transform">
+      <slot :width="contentWidth" :height="contentHeight"></slot>
+    </g>
+  </svg>
 </template>
 
 <script>
@@ -64,7 +68,7 @@ export default {
 
       if (!data) return
 
-      const arc = d3.select(this.$el).selectAll('.arc')
+      const arc = d3.select(this.$refs.content).selectAll('.arc')
         .data(pie(data))
         .enter().append("g")
         .attr("class", "arc")

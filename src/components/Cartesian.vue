@@ -1,28 +1,30 @@
 <template>
-  <g class="cartesian" :transform="transform">
-    <axis v-if="showAxisX"
-      :type="axisX.type"
-      :title="axisX.title"
-      :location="axisLocationX"
-      :options="axisX.options"
-      :scaleX="scaleX"
-      :scaleY="scaleY"
-      :width="contentWidth"
-      :height="contentHeight"/>
-    <axis v-if="showAxisY"
-      :type="axisY.type"
-      :title="axisY.title"
-      :location="axisLocationY"
-      :options="axisY.options"
-      :scaleX="scaleX"
-      :scaleY="scaleY"
-      :width="contentWidth"
-      :height="contentHeight"/>
-    <slot :scaleX="scaleX"
-      :scaleY="scaleY"
-      :width="contentWidth"
-      :height="contentHeight"/>
-  </g>
+  <svg class="cartesian" :width="width" :height="height">
+    <g :transform="transform">
+      <axis v-if="showAxisX"
+        :type="axisX.type"
+        :title="axisX.title"
+        :location="axisLocationX"
+        :options="axisX.options"
+        :scaleX="scaleX"
+        :scaleY="scaleY"
+        :width="contentWidth"
+        :height="contentHeight"/>
+      <axis v-if="showAxisY"
+        :type="axisY.type"
+        :title="axisY.title"
+        :location="axisLocationY"
+        :options="axisY.options"
+        :scaleX="scaleX"
+        :scaleY="scaleY"
+        :width="contentWidth"
+        :height="contentHeight"/>
+      <slot :scaleX="scaleX"
+        :scaleY="scaleY"
+        :width="contentWidth"
+        :height="contentHeight"/>
+    </g>
+  </svg>
 </template>
 
 <script>
@@ -48,6 +50,12 @@ export default {
       validator: (value) => {
         const { type, domain } = value
         return type && domain
+      }
+    },
+    margin: {
+      type: Object,
+      default: () => {
+        return { top: 20, right: 20, bottom: 30, left: 30 }
       }
     }
   },

@@ -1,5 +1,9 @@
 <template>
-  <g ref="country" class="country" :transform="transform"></g>
+  <svg class="country" :width="width" :height="height">
+    <g ref="content" :transform="transform">
+      <slot></slot>
+    </g>
+  </svg>
 </template>
 
 <script>
@@ -52,7 +56,7 @@ export default {
       if (!data) return
 
       const path = d3.geoPath()
-      const g = d3.select(this.$refs.country)
+      const g = d3.select(this.$refs.content)
       const county = g.append("g")
         .attr("class", "counties")
         .selectAll("path")
@@ -69,8 +73,7 @@ export default {
         .attr("class", "states")
         .attr("d", path)
 
-      console.log(this.$refs.country.getBoundingClientRect())
-      const { width, height } = this.$refs.country.getBoundingClientRect()
+      const { width, height } = this.$refs.content.getBoundingClientRect()
       const widthRatio = this.contentWidth / width
       const heightRatio = this.contentHeight / height
       this.scale = Math.min(widthRatio, heightRatio)
