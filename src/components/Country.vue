@@ -1,7 +1,9 @@
 <template>
   <svg class="country" :width="width" :height="height">
-    <g ref="content" :transform="transform"/>
-    <slot></slot>
+    <g ref="content" :transform="transform">
+      <g ref="map" :transform="scale !== 1 ? `scale(${scale})` : null"/>
+      <slot></slot>
+    </g>
   </svg>
 </template>
 
@@ -23,25 +25,11 @@ export default {
     titleFn: {
       type: Function,
       required: false
-    },
-    margin: {
-      type: Object,
-      default: () => {
-        return { top: 10, right: 10, bottom: 10, left: 10 }
-      }
     }
   },
   data () {
     return {
       scale: 1
-    }
-  },
-  computed: {
-    transform () {
-      const { margin, scale } = this
-      return scale === 1
-        ? `translate(${margin.left},${margin.top})`
-        : `translate(${margin.left},${margin.top})scale(${scale})`
     }
   },
   watch: {
@@ -55,7 +43,7 @@ export default {
       if (!data) return
 
       const path = d3.geoPath()
-      const g = d3.select(this.$refs.content)
+      const g = d3.select(this.$refs.map)
       const county = g.append("g")
         .attr("class", "counties")
         .selectAll("path")
@@ -72,7 +60,7 @@ export default {
         .attr("class", "states")
         .attr("d", path)
 
-      const { width, height } = this.$refs.content.getBoundingClientRect()
+      const { width, height } = this.$refs.map.getBoundingClientRect()
       const widthRatio = this.contentWidth / width
       const heightRatio = this.contentHeight / height
       this.scale = Math.min(widthRatio, heightRatio)
