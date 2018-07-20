@@ -1,5 +1,6 @@
 import Bars from './Bars.vue'
 import Cartesian from './Cartesian.vue'
+import ColorBar from './ColorBar.vue'
 import Country from './Country.vue'
 import Group from './Group.vue'
 import Legend from './Legend.vue'
@@ -12,6 +13,7 @@ import Text from './Text.vue'
 export {
   Bars,
   Cartesian,
+  ColorBar,
   Country,
   Group,
   Legend,

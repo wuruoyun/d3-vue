@@ -1,8 +1,7 @@
 <template>
   <svg class="country" :width="width" :height="height">
-    <g ref="content" :transform="transform">
-      <slot></slot>
-    </g>
+    <g ref="content" :transform="transform"/>
+    <slot></slot>
   </svg>
 </template>
 
