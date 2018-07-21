@@ -1,5 +1,9 @@
 # Quick Start
 
+This library may be used directly if you find the components needs your needs.
+
+Alternatively, you may use the components as example to build your own.
+
 ## Install
 
 ```bash

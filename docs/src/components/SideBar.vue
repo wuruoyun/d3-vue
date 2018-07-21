@@ -31,7 +31,7 @@ export default {
           ]
         },
         {
-          title: 'Basic',
+          title: 'Basic Demo',
           pages: [
             { to: '/bar-chart', title: 'Bar Chart' },
             { to: '/line-chart', title: 'Line Chart' },
@@ -40,7 +40,7 @@ export default {
           ]
         },
         {
-          title: 'Intermediate',
+          title: 'Intermediate Demo',
           pages: [
             { to: '/choropleth', title: 'Choropleth' }
           ]

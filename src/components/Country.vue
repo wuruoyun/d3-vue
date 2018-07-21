@@ -1,6 +1,6 @@
 <template>
   <svg class="country" :width="width" :height="height">
-    <g ref="content" :transform="transform">
+    <g :transform="transform">
       <g ref="map" :transform="scale !== 1 ? `scale(${scale})` : null"/>
       <slot></slot>
     </g>
