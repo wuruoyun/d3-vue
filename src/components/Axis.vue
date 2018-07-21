@@ -1,14 +1,5 @@
 <template>
-  <g :class="axisClass" :transform="transform">
-    <template v-if="title">
-      <d3-text v-if="isY" :x="0" :y="6" dy="0.71em" :rotate="-90">
-        {{ title }}
-      </d3-text>
-      <d3-text v-if="isX" :x="width" :y="-6" style="text-anchor:end;">
-        {{ title }}
-      </d3-text>
-    </template>
-  </g>
+  <g :class="axisClass" :transform="transform"></g>
 </template>
 
 <script>
@@ -55,11 +46,7 @@ export default {
       }
     },
     scale () {
-      if (this.isX) {
-        return this.scaleX
-      } else {
-        return this.scaleY
-      }
+      return this.isX ? this.scaleX: this.scaleY
     }
   },
   watch: {
@@ -79,7 +66,7 @@ export default {
   },
   methods: {
     update () {
-      const { type, location, scale, options } = this
+      const { type, title, location, scale, options, width } = this
       const axis = d3[`axis${location}`](scale)
       if (options) {
         switch (type) {
@@ -90,7 +77,50 @@ export default {
             break
         }
       }
-      d3.select(this.$el).call(axis)
+      const g = d3.select(this.$el).call(axis)
+
+      if (title) {
+        switch (location) {
+          case 'Left':
+            if (options && options.titleLastTick) {
+              g.select('.tick:last-of-type text')
+                .select(function() { return this.parentNode.appendChild(this.cloneNode()) })
+                .attr('class', 'label')
+                .attr('x', 3)
+                .attr('text-anchor', 'start')
+                .text(title)
+            } else {
+              g.append('text')
+                .attr('class', 'label')
+                .attr('transform', 'rotate(-90)')
+                .attr('fill', 'black')
+                .attr('y', 6)
+                .attr('dy', '.71em')
+                .style('text-anchor', 'end')
+                .text(title)
+            }
+            break
+          case 'Bottom':
+            if (options && options.titleLastTick) {
+              g.select(".tick:last-of-type text")
+                .select(function() { return this.parentNode.appendChild(this.cloneNode()) })
+                .attr('class', 'label')
+                .attr('fill', 'black')
+                .attr("y", -3)
+                .attr("dy", null)
+                .text(title)
+            } else {
+              g.append('text')
+                .attr('class', 'label')
+                .attr('fill', 'black')
+                .attr("x", width)
+                .attr("y", -6)
+                .style("text-anchor", "end")
+                .text(title)
+            }
+            break
+          }
+      }
     }
   },
   mounted () {

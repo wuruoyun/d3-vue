@@ -24,7 +24,8 @@ export default {
         title: 'Carats',
         domain: [2e-1, 5e0],
         options: {
-          ticks: { count: null, specifier: ".1f"}
+          ticks: { count: null, specifier: ".1f"},
+          titleLastTick: true
         }
       },
       axisY: {
@@ -32,7 +33,8 @@ export default {
         title: 'Price (USD)',
         domain: [3e2, 2e4],
         options: {
-          ticks: { count: null, specifier: ".1s"}
+          ticks: { count: null, specifier: ".1s"},
+          titleLastTick: true
         }
       },
       colorFn: null
@@ -57,6 +59,9 @@ export default {
 .demo /deep/ {
   .domain {
     display: none;
+  }
+  .axis .label {
+    font-weight: bold;
   }
 }
 </style>
