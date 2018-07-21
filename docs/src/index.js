@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import * as mylib from 'my-lib'
+import * as d3v from 'd3-vue'
 import App from './App.vue'
 import routes from './routes'
 
 Vue.use(VueRouter)
-Vue.use(mylib)
+Vue.use(d3v)
 
 const router = new VueRouter({
   routes, // short for `routes: routes`
