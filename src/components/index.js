@@ -1,6 +1,7 @@
 import Bars from './Bars.vue'
 import Cartesian from './Cartesian.vue'
 import ColorBar from './ColorBar.vue'
+import Contour from './Contour.vue'
 import Country from './Country.vue'
 import Group from './Group.vue'
 import Legend from './Legend.vue'
@@ -14,6 +15,7 @@ export {
   Bars,
   Cartesian,
   ColorBar,
+  Contour,
   Country,
   Group,
   Legend,

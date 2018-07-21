@@ -42,8 +42,8 @@ export default {
         {
           title: 'Intermediate Demo',
           pages: [
-            { to: '/choropleth', title: 'Choropleth' }
-          ]
+            { to: '/choropleth', title: 'Choropleth' },
+            { to: '/density-contour', title: 'Density Contour' }          ]
         }
       ]
     }
