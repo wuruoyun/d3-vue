@@ -1,5 +1,5 @@
 <template>
-  <g ref="colorBar" :transform="transform"/>
+  <g :transform="transform"/>
 </template>
 
 <script>
@@ -44,7 +44,7 @@ export default {
     update () {
       const { colorScale, domain, title, tickFormat } = this
       const x = d3.scaleLinear().domain(domain).rangeRound([0, 260])
-      const g = d3.select(this.$refs.colorBar)
+      const g = d3.select(this.$el)
       
       g.selectAll('rect')
         .data(colorScale.range().map(d => {

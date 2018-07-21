@@ -1,5 +1,5 @@
 <template>
-  <g ref="axis" :class="axisClass" :transform="transform">
+  <g :class="axisClass" :transform="transform">
     <template v-if="title">
       <d3-text v-if="isY" :x="0" :y="6" dy="0.71em" :rotate="-90">
         {{ title }}
@@ -84,12 +84,13 @@ export default {
       if (options) {
         switch (type) {
           case 'Linear':
+          case 'Log':
             const { ticks } = options
             if (ticks) axis.ticks(ticks.count, ticks.specifier)
             break
         }
       }
-      d3.select(this.$refs.axis).call(axis)
+      d3.select(this.$el).call(axis)
     }
   },
   mounted () {

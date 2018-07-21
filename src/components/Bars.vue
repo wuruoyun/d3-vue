@@ -1,5 +1,5 @@
 <template>
-  <g ref="bars"></g>
+  <g></g>
 </template>
 
 <script>

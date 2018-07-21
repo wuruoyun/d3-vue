@@ -1,5 +1,5 @@
 <template>
-  <g ref="points"></g>
+  <g></g>
 </template>
 
 <script>
