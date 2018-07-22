@@ -24,7 +24,7 @@ export default {
   },
   computed: {
     colorFn () {
-      const color = this.color || 'orange'
+      const { color } = this
       return typeof color === 'function' ? color : d => color
     }
   },
