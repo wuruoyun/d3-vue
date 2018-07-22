@@ -1,6 +1,10 @@
 <template>
   <svg class="cartesian" :width="width" :height="height">
     <g :transform="transform">
+      <slot :scaleX="scaleX"
+        :scaleY="scaleY"
+        :width="contentWidth"
+        :height="contentHeight"/>      
       <axis v-if="showAxisX"
         :type="axisX.type"
         :title="axisX.title"
@@ -16,10 +20,6 @@
         :location="axisLocationY"
         :options="axisY.options"
         :scaleX="scaleX"
-        :scaleY="scaleY"
-        :width="contentWidth"
-        :height="contentHeight"/>
-      <slot :scaleX="scaleX"
         :scaleY="scaleY"
         :width="contentWidth"
         :height="contentHeight"/>

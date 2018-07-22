@@ -23,6 +23,7 @@ Original D3 demo at [https://bl.ocks.org/mbostock/3884955](https://bl.ocks.org/m
 <script>
 import * as d3 from 'd3'
 import '../../data/city-temperature.tsv'
+const parseTime = d3.timeParse("%Y%m%d")
 
 export default {
   data () {
@@ -37,7 +38,6 @@ export default {
   created () {
     d3.tsv('city-temperature.tsv',
       (d, _, columns) => {
-        const parseTime = d3.timeParse("%Y%m%d")
         d.date = parseTime(d.date)
         for (let i = 1, n = columns.length, c; i < n; ++i) d[c = columns[i]] = +d[c]
         return d

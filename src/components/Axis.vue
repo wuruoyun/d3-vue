@@ -72,8 +72,10 @@ export default {
         switch (type) {
           case 'Linear':
           case 'Log':
-            const { ticks } = options
+            const { ticks, tickSize, tickPadding } = options
             if (ticks) axis.ticks(ticks.count, ticks.specifier)
+            if (tickSize) axis.tickSize(tickSize)
+            if (tickPadding) axis.tickPadding(tickPadding)
             break
         }
       }

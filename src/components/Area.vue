@@ -19,6 +19,10 @@ export default {
         return d => 0
       }
     },
+    curveFn: {
+      type: Function,
+      required: false
+    },
     definedFn: {
       type: Function,
       required: false
@@ -38,6 +42,7 @@ export default {
         .y0(this.scaledY0Fn)
         .y1(this.scaledYFn)
       
+      if (this.curveFn) area.curve(this.curveFn)
       if (this.definedFn) area.defined(this.definedFn)
       return area(this.data)
     }
