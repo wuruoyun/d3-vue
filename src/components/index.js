@@ -9,7 +9,6 @@ import Legend from './Legend.vue'
 import Line from './Line.vue'
 import Pie from './Pie.vue'
 import Points from './Points.vue'
-import Root from './Root.vue'
 import Text from './Text.vue'
 
 export {
@@ -24,6 +23,5 @@ export {
   Line,
   Pie,
   Points,
-  Root,
   Text
 }

@@ -4,14 +4,14 @@ Original D3 demo at [https://bl.ocks.org/mbostock/34f08d5e11952a80609169b7917d41
 
 ```html
 <template>
-  <d3-root :width="850" :height="450">
+  <div class="demo">
     <d3-cartesian :margin="margin" :width="850" :height="350" :axisX="axisX" :axisY="axisY">
       <d3-area :data="data" x="date" y="price" :curveFn ="curveFn" slot-scope="props" v-bind="props"/>
     </d3-cartesian>
-    <d3-cartesian :margin="margin" :width="850" :height="100" :y="350" :axisX="axisX" :axisY="axisY2">
+    <d3-cartesian :margin="margin" :width="850" :height="100" :axisX="axisX" :axisY="axisY2">
       <d3-area :data="data" x="date" y="price" :curveFn ="curveFn" slot-scope="props" v-bind="props"/>
     </d3-cartesian>
-  </d3-root>
+  </div>
 </template>
 
 <script>
