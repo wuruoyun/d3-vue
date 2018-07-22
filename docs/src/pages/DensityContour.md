@@ -65,5 +65,5 @@ export default {
   }
 }
 </style>
-<!-- scatter-plot-demo.vue -->
+<!-- density-contour-demo.vue -->
 ````

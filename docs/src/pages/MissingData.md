@@ -1,12 +1,13 @@
-# Line with missing data
+# Missing data
 
-Original D3 demo at [https://bl.ocks.org/mbostock/0533f44f2cfabecc5e3a](https://bl.ocks.org/mbostock/0533f44f2cfabecc5e3a)
+Original D3 demo at [https://bl.ocks.org/mbostock/3035090](https://bl.ocks.org/mbostock/3035090)
 
 ```html
 <template>
   <d3-cartesian class="demo" :margin="margin" :width="850" :height="450" :axisX="axisX" :axisY="axisY">
     <template slot-scope="props">
       <d3-line :data="data" x="x" y="y" :definedFn="d => d" v-bind="props"/>
+      <d3-area :data="data" x="x" y="y" :definedFn="d => d" v-bind="props"/>
       <d3-points :data="filtered" x="x" y="y" :size="3.5" v-bind="props"/>
     </template>
   </d3-cartesian>
@@ -54,5 +55,5 @@ export default {
   }
 }
 </style>
-<!-- line-chart-demo.vue -->
+<!-- line-with-missing-data-demo.vue -->
 ````

@@ -33,6 +33,7 @@ export default {
         {
           title: 'Basic Demo',
           pages: [
+            { to: '/area-chart', title: 'Area Chart'},
             { to: '/bar-chart', title: 'Bar Chart' },
             { to: '/line-chart', title: 'Line Chart' },
             { to: '/pie-chart', title: 'Pie Chart' },
@@ -44,7 +45,7 @@ export default {
           pages: [
             { to: '/choropleth', title: 'Choropleth' },
             { to: '/density-contour', title: 'Density Contour' },
-            { to: '/line-with-missing-data', title: 'Line with Midding Data'}
+            { to: '/missing-data', title: 'Missing Data'}
           ]
         }
       ]

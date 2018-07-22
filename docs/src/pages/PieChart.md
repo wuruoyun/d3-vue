@@ -45,5 +45,5 @@ export default {
   }
 }
 </style>
-<!-- bar-chart-demo.vue -->
+<!-- pie-chart-demo.vue -->
 ```

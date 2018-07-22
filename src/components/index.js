@@ -1,3 +1,4 @@
+import Area from './Area.vue'
 import Bars from './Bars.vue'
 import Cartesian from './Cartesian.vue'
 import ColorBar from './ColorBar.vue'
@@ -12,6 +13,7 @@ import Root from './Root.vue'
 import Text from './Text.vue'
 
 export {
+  Area,
   Bars,
   Cartesian,
   ColorBar,
