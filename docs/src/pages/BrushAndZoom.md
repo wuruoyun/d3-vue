@@ -5,7 +5,8 @@ Original D3 demo at [https://bl.ocks.org/mbostock/34f08d5e11952a80609169b7917d41
 ```html
 <template>
   <div class="demo">
-    <d3-cartesian :margin="margin" :width="850" :height="350" :axisX="axisX" :axisY="axisY">
+    <d3-cartesian :margin="margin" :width="850" :height="350" :axisX="axisX" :axisY="axisY"
+      zoom="x" @zoom="zoomed">
       <d3-area :data="data" x="date" y="price" :curveFn ="curveFn" slot-scope="props" v-bind="props"/>
     </d3-cartesian>
     <d3-cartesian :margin="margin" :width="850" :height="100" :axisX="axisX" :axisY="axisY2">
@@ -24,6 +25,7 @@ export default {
     return {
       margin: { top: 20, right: 20, bottom: 30, left: 40 },
       axisX: { type: 'Time', domain: [] },
+      axisX2: { type: 'Time', domain: [] },
       axisY: { type: 'Linear', domain: [] },
       curveFn: d3.curveMonotoneX,
       data: []
@@ -32,6 +34,11 @@ export default {
   computed: {
     axisY2 () {
       return Object.assign({}, this.axisY, { display: 'none' })
+    }
+  },
+  methods: {
+    zoomed (event) {
+      console.log('zoomed', event)
     }
   },
   created () {
@@ -43,6 +50,7 @@ export default {
       }).then(data => {
         this.axisX.domain = d3.extent(data, d => d.date)
         this.axisY.domain = [0, d3.max(data, d => d.price)]
+        this.axisX2.domain = d3.extent(data, d => d.date)
         this.data = data
       })
   }
@@ -51,14 +59,7 @@ export default {
 
 <style lang="scss" scoped>
 .demo /deep/ {
-  .axis--x path {
-    display: none;
-  }
-  .line {
-    fill: none;
-    stroke: steelblue;
-    stroke-width: 1.5px;
-  }
+
 }
 </style>
 <!-- area-chart-demo.vue -->
