@@ -78,7 +78,8 @@ export default {
   data () {
     return {
       prefScaleX: null,
-      prefScaleY: null
+      prefScaleY: null,
+      silent: false
     }
   },
   computed: {
@@ -129,9 +130,44 @@ export default {
       }
       return scale
     },
+    zoomTo (domain) {
+      const { zoom, defaultScaleX, defaultScaleY } = this
+      switch (zoom) {
+        case 'x':
+          this.prefScaleX = defaultScaleX.copy().domain(domain.x)
+          break
+        case 'y':
+          this.prefScaleY = defaultScaleY.copy().domain(domain)
+          break
+        default:
+          this.prefScaleX = defaultScaleX.copy().domain(domain.x)
+          this.prefScaleY = defaultScaleY.copy().domain(domain.y)
+          break
+      }
+    },
     resetZoom () {
       this.prefScaleX = null
       this.prefScaleY = null
+    },
+    zoomed () {
+      const { zoom } = this
+      const t = d3.event.transform
+      if (zoom === 'x') {
+        this.prefScaleX = t.rescaleX(this.defaultScaleX)
+        if (!this.silent) this.$emit('zoom', this.prefScaleX.domain())
+      } else if (zoom === 'y') {
+        this.prefScaleY = t.rescaleY(this.defaultScaleY)
+        if (!this.silent) this.$emit('zoom', this.prefScaleY.domain())
+      } else {
+        this.prefScaleX = t.rescaleX(this.defaultScaleX)
+        this.prefScaleY = t.rescaleY(this.defaultScaleY)
+        if (!this.silent) {
+          this.$emit('zoom', {
+            x: this.prefScaleX.domain(),
+            y: this.prefScaleY.domain()
+          })
+        }
+      }
     }
   },
   mounted () {
@@ -142,27 +178,7 @@ export default {
         .scaleExtent([1, Infinity])
         .translateExtent([[0, 0], [contentWidth, contentHeight]])
         .extent([[0, 0], [contentWidth, contentHeight]])
-        .on('zoom', () => {
-          const t = d3.event.transform
-          if (zoom === 'x') {
-            this.prefScaleX = t.rescaleX(this.defaultScaleX)
-            this.$emit('zoom', {
-              x: this.prefScaleX.domain()
-            })
-          } else if (zoom === 'y') {
-            this.prefScaleY = t.rescaleY(this.defaultScaleY)
-            this.$emit('zoom', {
-              y: this.prefScaleY.domain()
-            })
-          } else {
-            this.prefScaleX = t.rescaleX(this.defaultScaleX)
-            this.prefScaleY = t.rescaleY(this.defaultScaleY)
-            this.$emit('zoom', {
-              x: this.prefScaleX.domain(),
-              y: this.prefScaleY.domain()
-            })            
-          }
-        })
+        .on('zoom', this.zoomed)
       d3.select(this.$refs.zoom).call(zoomFn)
     }
   }
