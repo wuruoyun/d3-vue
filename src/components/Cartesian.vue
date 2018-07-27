@@ -131,17 +131,31 @@ export default {
       return scale
     },
     zoomTo (domain) {
-      const { zoom, defaultScaleX, defaultScaleY } = this
-      switch (zoom) {
+      const { defaultScaleX, defaultScaleY, contentWidth, contentHeight } = this
+      let x, y
+      switch (this.zoom) {
         case 'x':
-          this.prefScaleX = defaultScaleX.copy().domain(domain.x)
+          x = [defaultScaleX(domain[0]), defaultScaleX(domain[1])]
+          this.prefScaleX = defaultScaleX.copy().domain(domain)
+          d3.select(this.$refs.zoom).call(this.zoomFn.transform, d3.zoomIdentity
+            .scale(contentWidth / (x[1] - x[0]))
+            .translate(-x[0], 0))
           break
         case 'y':
+          y = [defaultScaleX(domain[0]), defaultScaleX(domain[1])]
           this.prefScaleY = defaultScaleY.copy().domain(domain)
+          d3.select(this.$refs.zoom).call(this.zoomFn.transform, d3.zoomIdentity
+            .scale(1, contentHeight / (y[1] - y[0]))
+            .translate(0, -y[0]))
           break
         default:
+          x = [defaultScaleX(domain.x[0]), defaultScaleX(domain.x[1])]
+          y = [defaultScaleX(domain.y[0]), defaultScaleX(domain.y[1])]
           this.prefScaleX = defaultScaleX.copy().domain(domain.x)
           this.prefScaleY = defaultScaleY.copy().domain(domain.y)
+          d3.select(this.$refs.zoom).call(this.zoomFn.transform, d3.zoomIdentity
+            .scale(contentWidth / (x[1] - x[0]), contentHeight / (y[1] - y[0]))
+            .translate(-x[0], -y[0]))
           break
       }
     },
@@ -174,12 +188,12 @@ export default {
     const { zoom } = this
     if (zoom) {
       const { contentWidth, contentHeight } = this
-      const zoomFn = d3.zoom()
+      this.zoomFn = d3.zoom()
         .scaleExtent([1, Infinity])
         .translateExtent([[0, 0], [contentWidth, contentHeight]])
         .extent([[0, 0], [contentWidth, contentHeight]])
         .on('zoom', this.zoomed)
-      d3.select(this.$refs.zoom).call(zoomFn)
+      d3.select(this.$refs.zoom).call(this.zoomFn)
     }
   }
 }

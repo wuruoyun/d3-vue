@@ -39,7 +39,7 @@ export default {
       this.$refs.brush.moveTo(domain)
     },
     brushed (domain) {
-      this.$refs.cartesian.zoomTo(domain)
+      this.$refs.cartesian.zoomTo(domain.x)
     }
   },
   created () {
