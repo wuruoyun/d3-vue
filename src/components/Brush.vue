@@ -66,14 +66,14 @@ export default {
       const { scaleX } = this
       const selection = d3.event.selection || scaleX.range()
       const x = selection.map(scaleX.invert, scaleX)
-      this.$emit('brushed', { x })
+      this.$emit('brushed', x)
     },
     brushedY () {
       if (this.silent) return
       const { scaleY } = this
       const selection = d3.event.selection || scaleY.range()
       const y = selection.map(scaleY.invert, scaleY)
-      this.$emit('brushed', { y })
+      this.$emit('brushed', y)
     },
     brushed () {
       if (this.silent) return

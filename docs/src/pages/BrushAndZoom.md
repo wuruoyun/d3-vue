@@ -5,11 +5,11 @@ Original D3 demo at [https://bl.ocks.org/mbostock/34f08d5e11952a80609169b7917d41
 ```html
 <template>
   <div class="demo">
-    <d3-cartesian ref="cartesian" :width="850" :height="350"
+    <d3-cartesian ref="cartesian" :margin="margin" :width="850" :height="350"
       :axisX="axisX" :axisY="axisY" zoom="x" @zoom="zoomed">
       <d3-area :data="data" x="date" y="price" :curveFn ="curveFn" slot-scope="props" v-bind="props"/>
     </d3-cartesian>
-    <d3-cartesian :width="850" :height="100" :axisX="axisX2" :axisY="axisY2">
+    <d3-cartesian :margin="margin" :width="850" :height="100" :axisX="axisX2" :axisY="axisY2">
       <template slot-scope="props">
         <d3-area :data="data" x="date" y="price" :curveFn ="curveFn" v-bind="props"/>
         <d3-brush ref="brush" orientation="x" @brushed="brushed" v-bind="props"/>
@@ -26,6 +26,7 @@ const parseDate = d3.timeParse("%b %Y")
 export default {
   data () {
     return {
+      margin: { top: 20, right: 20, bottom: 30, left: 40 },
       axisX: { type: 'Time', domain: [] },
       axisY: { type: 'Linear', domain: [] },
       axisX2: { type: 'Time', domain: [] },
@@ -39,7 +40,7 @@ export default {
       this.$refs.brush.moveTo(domain)
     },
     brushed (domain) {
-      this.$refs.cartesian.zoomTo(domain.x)
+      this.$refs.cartesian.zoomTo(domain)
     }
   },
   created () {
@@ -63,11 +64,5 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.demo /deep/ {
-
-}
-</style>
 <!-- brush-and-zoom-demo.vue -->
 ````
