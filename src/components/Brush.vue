@@ -53,7 +53,7 @@ export default {
           this.rangeY = [scaleY(domain[0]), scaleY(domain[1])]
           break
         default:
-          this.rangeX = [scaleX(domain.x[0]), scaleY(domain.x[1])]
+          this.rangeX = [scaleX(domain.x[0]), scaleX(domain.x[1])]
           this.rangeY = [scaleY(domain.y[0]), scaleY(domain.y[1])]
           break
       }
@@ -73,31 +73,32 @@ export default {
       const { scaleY } = this
       const selection = d3.event.selection || scaleY.range()
       const y = selection.map(scaleY.invert, scaleY)
-      this.$emit('brushed', y)
+      this.$emit('brushed', [y[1], y[0]])
     },
     brushed () {
       if (this.silent) return
       const { scaleX, scaleY } = this
-      const selectionX = d3.event.selection || scaleX.range()
-      const selectionY = d3.event.selection || scaleY.range()
+      const s = d3.event.selection
+      const selectionX = [s[0][0], s[1][0]] || scaleX.range()
+      const selectionY = [s[0][1], s[1][1]] || scaleY.range()
       const x = selectionX.map(scaleX.invert, scaleX)
       const y = selectionY.map(scaleY.invert, scaleY)
-      this.$emit('brushed', { x, y })
+      this.$emit('brushed', { x, y: [y[1], y[0]] })
     },
     update () {
       const { $el, brushFn, rangeX, rangeY } = this
       if (rangeX && rangeY) {
         d3.select($el).call(brushFn)
           .call(brushFn.move, [
-            [rangeX[0], rangeY[0]],
-            [rangeX[1], rangeY[1]]
+            [rangeX[0], rangeY[1]],
+            [rangeX[1], rangeY[0]]
           ])
       } else if (rangeX) {
         d3.select($el).call(brushFn)
           .call(brushFn.move, [rangeX[0], rangeX[1]])
       } else if (rangeY) {
         d3.select($el).call(brushFn)
-          .call(brushFn.move, [rangeY[0], rangeY[1]])
+          .call(brushFn.move, [rangeY[1], rangeY[0]])
       }
     }
   },

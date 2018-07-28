@@ -130,33 +130,52 @@ export default {
       }
       return scale
     },
-    zoomTo (domain) {
-      const { defaultScaleX, defaultScaleY, contentWidth, contentHeight } = this
-      let x, y
-      switch (this.zoom) {
-        case 'x':
-          x = [defaultScaleX(domain[0]), defaultScaleX(domain[1])]
-          this.prefScaleX = defaultScaleX.copy().domain(domain)
+    zoomToX (domain) {
+      const { zoom, defaultScaleX, contentWidth } = this
+      if (zoom && zoom !== 'x') {
+        console.error('Interactive zoom is not x.')
+      } else {
+        this.prefScaleX = defaultScaleX.copy().domain(domain)
+        if (zoom) {
+          const x = [defaultScaleX(domain[0]), defaultScaleX(domain[1])]
+          this.silent = true
           d3.select(this.$refs.zoom).call(this.zoomFn.transform, d3.zoomIdentity
             .scale(contentWidth / (x[1] - x[0]))
             .translate(-x[0], 0))
-          break
-        case 'y':
-          y = [defaultScaleX(domain[0]), defaultScaleX(domain[1])]
-          this.prefScaleY = defaultScaleY.copy().domain(domain)
+          this.silent = false
+        }
+      }
+    },
+    zoomToY (domain) {
+      const { zoom, defaultScaleY, contentHeight } = this
+      if (zoom && zoom !== 'y') {
+        console.error('Interactive zoom is not y.')
+      } else {
+        this.prefScaleY = defaultScaleY.copy().domain(domain)
+        if (zoom) {
+          const y = [defaultScaleY(domain[0]), defaultScaleY(domain[1])]
+          this.silent = true
           d3.select(this.$refs.zoom).call(this.zoomFn.transform, d3.zoomIdentity
-            .scale(1, contentHeight / (y[1] - y[0]))
-            .translate(0, -y[0]))
-          break
-        default:
-          x = [defaultScaleX(domain.x[0]), defaultScaleX(domain.x[1])]
-          y = [defaultScaleX(domain.y[0]), defaultScaleX(domain.y[1])]
-          this.prefScaleX = defaultScaleX.copy().domain(domain.x)
-          this.prefScaleY = defaultScaleY.copy().domain(domain.y)
-          d3.select(this.$refs.zoom).call(this.zoomFn.transform, d3.zoomIdentity
-            .scale(contentWidth / (x[1] - x[0]), contentHeight / (y[1] - y[0]))
-            .translate(-x[0], -y[0]))
-          break
+            .scale(contentHeight / (y[0] - y[1]))
+            .translate(0, -y[1]))
+          this.silent = false
+        }
+      }
+    },
+    zoomTo (domain) {
+      const { zoom, defaultScaleX, defaultScaleY, contentWidth, contentHeight } = this
+      if (zoom) {
+        console.error('Interactive zoom is not disabled.')
+      } else {
+        const x = [defaultScaleX(domain.x[0]), defaultScaleX(domain.x[1])]
+        const y = [defaultScaleY(domain.y[0]), defaultScaleY(domain.y[1])]
+        this.prefScaleX = defaultScaleX.copy().domain(domain.x)
+        this.prefScaleY = defaultScaleY.copy().domain(domain.y)
+        this.silent = true
+        d3.select(this.$refs.zoom).call(this.zoomFn.transform, d3.zoomIdentity
+          .scale(contentWidth / (x[1] - x[0]), contentHeight / (y[0] - y[1]))
+          .translate(-x[0], -y[1]))
+        this.silent = false
       }
     },
     resetZoom () {
