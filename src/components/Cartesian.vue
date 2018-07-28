@@ -178,9 +178,19 @@ export default {
         this.silent = false
       }
     },
-    resetZoom () {
-      this.prefScaleX = null
-      this.prefScaleY = null
+    resetZoom (orientation) {
+      switch (orientation) {
+        case 'x':
+          this.prefScaleX = null
+          break
+        case 'y':
+          this.prefScaleY = null
+          break
+        default:
+          this.prefScaleX = null
+          this.prefScaleY = null
+          break
+      }
     },
     zoomed () {
       const { zoom } = this
