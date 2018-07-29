@@ -46,8 +46,7 @@ export default {
       this.data = data
 
       const species = [...new Set(data.map(f => f.species))]
-      const colorScale = d3.scaleOrdinal(d3.schemeCategory10)
-        .domain(species)
+      const colorScale = d3.scaleOrdinal(d3.schemeCategory10).domain(species)
       this.species = species.map(s => {
         return { name: s, color: colorScale(s) }
       })

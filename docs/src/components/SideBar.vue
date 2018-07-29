@@ -44,6 +44,7 @@ export default {
           title: 'Intermediate Demo',
           pages: [
             { to: '/brush-and-zoom', title: 'Brush & Zoom' },
+            { to: '/brush-and-zoom-ii', title: 'Brush & Zoom II' },
             { to: '/choropleth', title: 'Choropleth' },
             { to: '/density-contour', title: 'Density Contour' },
             { to: '/missing-data', title: 'Missing Data' }
