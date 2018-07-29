@@ -25,7 +25,7 @@
           :width="margin.left"
           :height="contentHeight"/>
       </g>
-      <g clip-path="url(#content-clip)">
+      <g :clip-path="zoom ? 'url(#content-clip)' : null">
         <slot :scaleX="scaleX"
           :scaleY="scaleY"
           :width="contentWidth"
