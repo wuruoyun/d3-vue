@@ -7,7 +7,13 @@ Alternatively, you may use the components as example to build your own.
 ## Install
 
 ```bash
-npm install d3-vue --save
+npm install d3 d3-vue --save
+```
+
+If you use `Country` component:
+
+```bash
+npm install topojson --save
 ```
 
 ## Use the library
