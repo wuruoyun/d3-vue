@@ -2,14 +2,12 @@
 
 exports[`Axis.vue has the expected html structure 1`] = `
 <g
-  class="axis axis--x"
+  class="axis"
   fill="none"
   font-family="sans-serif"
   font-size="10"
   text-anchor="middle"
-  transform="translate(0,400)"
 >
-  <!---->
   <path
     class="domain"
     d="M0.5,6V0.5H1.5V6"

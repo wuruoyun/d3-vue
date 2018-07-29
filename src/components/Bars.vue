@@ -18,8 +18,8 @@ export default {
   mixins: [ CartesianArray ],
   computed: {
     orientation () {
-      return (typeof this.scaleX.domain()[0] === 'number'
-        && typeof this.scaleY.domain()[0] === 'string')
+      return (typeof this.scaleX.domain()[0] === 'number' &&
+        typeof this.scaleY.domain()[0] === 'string')
         ? 'horizontal' : 'vertical'
     }
   }

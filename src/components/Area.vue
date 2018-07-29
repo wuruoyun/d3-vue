@@ -41,7 +41,7 @@ export default {
         .x(this.scaledXFn)
         .y0(this.scaledY0Fn)
         .y1(this.scaledYFn)
-      
+
       if (this.curveFn) area.curve(this.curveFn)
       if (this.definedFn) area.defined(this.definedFn)
       return area(this.data)

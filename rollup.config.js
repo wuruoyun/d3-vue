@@ -35,4 +35,5 @@ export default {
     }),
     (process.env.NODE_ENV === 'production' && uglify({}, minify))
   ],
+  external: ['vue', 'd3']
 };

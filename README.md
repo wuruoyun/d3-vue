@@ -1,6 +1,6 @@
 # d3-vue
 
-> A Vue component library project
+> A Vue component library for visualization with [D3](https://d3js.org/).
 
 ## Build Setup
 

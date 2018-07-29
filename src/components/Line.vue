@@ -20,7 +20,7 @@ export default {
     definedFn: {
       type: Function,
       required: false
-    } 
+    }
   },
   computed: {
     path () {

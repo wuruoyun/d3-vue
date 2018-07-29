@@ -62,7 +62,7 @@ export default {
           case 'Left':
             if (options && options.titleLastTick) {
               g.select('.tick:last-of-type text')
-                .select(function() { return this.parentNode.appendChild(this.cloneNode()) })
+                .select(function () { return this.parentNode.appendChild(this.cloneNode()) })
                 .attr('class', 'label')
                 .attr('x', 3)
                 .attr('text-anchor', 'start')
@@ -80,24 +80,24 @@ export default {
             break
           case 'Bottom':
             if (options && options.titleLastTick) {
-              g.select(".tick:last-of-type text")
-                .select(function() { return this.parentNode.appendChild(this.cloneNode()) })
+              g.select('.tick:last-of-type text')
+                .select(function () { return this.parentNode.appendChild(this.cloneNode()) })
                 .attr('class', 'label')
                 .attr('fill', 'black')
-                .attr("y", -3)
-                .attr("dy", null)
+                .attr('y', -3)
+                .attr('dy', null)
                 .text(title)
             } else {
               g.append('text')
                 .attr('class', 'label')
                 .attr('fill', 'black')
-                .attr("x", this.width)
-                .attr("y", -6)
-                .style("text-anchor", "end")
+                .attr('x', this.width)
+                .attr('y', -6)
+                .style('text-anchor', 'end')
                 .text(title)
             }
             break
-          }
+        }
       }
     }
   },

@@ -11,8 +11,7 @@ describe('Axis.vue', () => {
     wrapper = createCmp({
       width: 600,
       height: 400,
-      scaleX: d3.scaleLinear(),
-      scaleY: d3.scaleLinear()
+      scale: d3.scaleLinear()
     })
     expect(wrapper.element).toMatchSnapshot()
   })

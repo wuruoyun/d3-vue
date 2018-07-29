@@ -44,21 +44,21 @@ export default {
 
       const path = d3.geoPath()
       const g = d3.select(this.$refs.map)
-      const county = g.append("g")
-        .attr("class", "counties")
-        .selectAll("path")
+      const county = g.append('g')
+        .attr('class', 'counties')
+        .selectAll('path')
         .data(topojson.feature(data, data.objects.counties).features)
-        .enter().append("path")
-        .attr("fill", countyColorFn)
-        .attr("d", path)
+        .enter().append('path')
+        .attr('fill', countyColorFn)
+        .attr('d', path)
       if (titleFn) {
-        county.append("title").text(titleFn)
+        county.append('title').text(titleFn)
       }
 
-      g.append("path")
+      g.append('path')
         .datum(topojson.mesh(data, data.objects.states, (a, b) => a !== b))
-        .attr("class", "states")
-        .attr("d", path)
+        .attr('class', 'states')
+        .attr('d', path)
 
       const { width, height } = this.$refs.map.getBoundingClientRect()
       const widthRatio = this.contentWidth / width
@@ -71,5 +71,3 @@ export default {
   }
 }
 </script>
-
-

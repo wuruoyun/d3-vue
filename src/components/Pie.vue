@@ -70,18 +70,18 @@ export default {
 
       const arc = d3.select(this.$refs.content).selectAll('.arc')
         .data(pie(data))
-        .enter().append("g")
-        .attr("class", "arc")
+        .enter().append('g')
+        .attr('class', 'arc')
 
-      arc.append("path")
-        .attr("d", pathFn)
-        .attr("fill", d => d.data[this.color])
+      arc.append('path')
+        .attr('d', pathFn)
+        .attr('fill', d => d.data[this.color])
 
-      arc.append("text")
-          .attr("transform", d => `translate(${labelFn.centroid(d)})`)
-          .attr("dy", "0.35em")
-          .text(d => d.data[this.label]);
-        }
+      arc.append('text')
+        .attr('transform', d => `translate(${labelFn.centroid(d)})`)
+        .attr('dy', '0.35em')
+        .text(d => d.data[this.label])
+    }
   },
   mounted () {
     this.update()

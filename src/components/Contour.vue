@@ -20,16 +20,15 @@ export default {
 
       const { width, height, scaledXFn, scaledYFn, colorFn } = this
 
-      const points = d3.select(this.$el).selectAll("path")
+      d3.select(this.$el).selectAll('path')
         .data(d3.contourDensity()
           .x(scaledXFn)
           .y(scaledYFn)
           .size([width, height])
-          .bandwidth(10)
-        (this.data))
-        .enter().append("path")
-          .attr("fill", colorFn)
-          .attr("d", d3.geoPath())
+          .bandwidth(10)(this.data))
+        .enter().append('path')
+        .attr('fill', colorFn)
+        .attr('d', d3.geoPath())
     }
   },
   mounted () {
