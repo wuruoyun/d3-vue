@@ -6,7 +6,6 @@ import Cartesian from './Cartesian.vue'
 import ColorBar from './ColorBar.vue'
 import Contour from './Contour.vue'
 import Country from './Country.vue'
-import Group from './Group.vue'
 import Legend from './Legend.vue'
 import Line from './Line.vue'
 import Pie from './Pie.vue'
@@ -22,7 +21,6 @@ export {
   ColorBar,
   Contour,
   Country,
-  Group,
   Legend,
   Line,
   Pie,
