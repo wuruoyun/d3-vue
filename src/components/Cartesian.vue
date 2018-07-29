@@ -33,7 +33,7 @@
       </g>
       <rect v-if="zoom"
         ref="zoom"
-        class="zoom"
+        style="cursor:move;fill:none;pointer-events:all;"
         :width="contentWidth"
         :height="contentHeight"/>
     </g>
@@ -223,11 +223,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.zoom {
-  cursor: move;
-  fill: none;
-  pointer-events: all;
-}
-</style>
