@@ -5,8 +5,10 @@ Original D3 demo at [https://bl.ocks.org/mbostock/f48fcdb929a620ed97877e4678ab15
 ```html
 <template>
   <d3-cartesian class="demo" :margin="margin" :width="width" :height="height" :x="x" :y="y">
-    <d3-points :data="data" :x="d => d[0]" :y="d => d[1]" :color="colorFn" :size="2.5"
-      slot-scope="props" v-bind="props"/>
+    <template slot-scope="props">
+      <d3-points :data="data" :x="d => d[0]" :y="d => d[1]" :color="colorFn" :size="2.5" v-bind="props"/>
+      <d3-brush orientation="xy" @end="brushEnd" v-bind="props"/>/>
+    </template>
     <d3-axis slot="south" orientation="Top" transform="translate(0,-10)" :options="optionsX"
       slot-scope="props" v-bind="props"/>
     <d3-axis slot="west" orientation="Right" transform="translate(10,0)" :options="optionsY"
@@ -28,6 +30,11 @@ export default {
       optionsY: null,
       colorFn: null,
       data: []
+    }
+  },
+  methods: {
+    brushEnd (domain) {
+      console.log(domain)
     }
   },
   created () {

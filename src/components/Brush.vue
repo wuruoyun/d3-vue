@@ -24,22 +24,18 @@ export default {
   computed: {
     brushFn () {
       const { orientation, width, height } = this
-      let brush
       switch (orientation) {
         case 'x':
-          brush = d3.brushX().extent([[0, 0], [width, height]])
-            .on('brush end', this.brushedX)
-          break
+          return d3.brushX().extent([[0, 0], [width, height]])
+            .on('brush', this.brushedX).on('end', this.brushedX(true))
         case 'y':
-          brush = d3.brushY().extent([[0, 0], [width, height]])
-            .on('brush end', this.brushedY)
-          break
+          return d3.brushY().extent([[0, 0], [width, height]])
+            .on('brush', this.brushedY).on('end', this.brushedY(true))
         default:
-          brush = d3.brush().extent([[0, 0], [width, height]])
-            .on('brush end', this.brushed)
-          break
+          return d3.brush().extent([[0, 0], [width, height]])
+            .on('brush', this.brushed)
+            .on('end', () => this.brushed(true))
       }
-      return brush
     }
   },
   methods: {
@@ -61,29 +57,29 @@ export default {
       this.update()
       this.silent = false // resume brush listener
     },
-    brushedX () {
-      if (this.silent) return
+    brushedX (end) {
+      if (this.silent || !d3.event) return
       const { scaleX } = this
       const selection = d3.event.selection || scaleX.range()
       const x = selection.map(scaleX.invert, scaleX)
-      this.$emit('brushed', x)
+      this.$emit(end ? 'end' : 'brush', x)
     },
-    brushedY () {
-      if (this.silent) return
+    brushedY (end) {
+      if (this.silent || !d3.event) return
       const { scaleY } = this
       const selection = d3.event.selection || scaleY.range()
       const y = selection.map(scaleY.invert, scaleY)
-      this.$emit('brushed', [y[1], y[0]])
+      this.$emit(end ? 'end' : 'brush', [y[1], y[0]])
     },
-    brushed () {
-      if (this.silent) return
+    brushed (end) {
+      if (this.silent || !d3.event) return
       const { scaleX, scaleY } = this
       const s = d3.event.selection
-      const selectionX = [s[0][0], s[1][0]] || scaleX.range()
-      const selectionY = [s[0][1], s[1][1]] || scaleY.range()
+      const selectionX = s ? [s[0][0], s[1][0]] : scaleX.range()
+      const selectionY = s ? [s[0][1], s[1][1]] : scaleY.range()
       const x = selectionX.map(scaleX.invert, scaleX)
       const y = selectionY.map(scaleY.invert, scaleY)
-      this.$emit('brushed', { x, y: [y[1], y[0]] })
+      this.$emit(end ? 'end' : 'brush', { x, y: [y[1], y[0]] })
     },
     update () {
       const { $el, brushFn, rangeX, rangeY } = this
@@ -99,6 +95,8 @@ export default {
       } else if (rangeY) {
         d3.select($el).call(brushFn)
           .call(brushFn.move, [rangeY[1], rangeY[0]])
+      } else {
+        d3.select($el).call(brushFn)
       }
     }
   },
