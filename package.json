@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "A Vue component library project",
   "author": "wuruoyun <wuruoyun@gmail.com>",
-  "private": true,
   "main": "dist/d3-vue.js",
   "dependencies": {
   },
