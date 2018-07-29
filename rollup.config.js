@@ -35,5 +35,5 @@ export default {
     }),
     (process.env.NODE_ENV === 'production' && uglify({}, minify))
   ],
-  external: ['vue', 'd3']
+  external: ['vue', 'd3', 'topojson']
 };
