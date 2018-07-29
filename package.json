@@ -1,11 +1,10 @@
 {
-  "name": "d3-vue",
+  "name": "@wuruoyun/d3-vue",
   "version": "0.1.0",
   "description": "A Vue component library project",
   "author": "wuruoyun <wuruoyun@gmail.com>",
   "main": "dist/d3-vue.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "peerDependencies": {
     "d3": "^5.5.0",
     "topojson": "^3.0.2",

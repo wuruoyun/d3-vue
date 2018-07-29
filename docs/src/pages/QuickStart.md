@@ -21,9 +21,9 @@ npm install topojson --save
 ```javascript
 // main.js
 import Vue from 'vue'
-import * as d3v from 'd3-vue'
+import * as d3v from '@wuruoyun/d3-vue'
 
-Vue.use(d3v);
+Vue.use(d3v)
 ```
 
 ### No Conflict
@@ -34,7 +34,7 @@ to them to avoid conflicts with other libs if needed.
 For example:
 
 ```javascript
-Vue.use(d3v, { prefix: 'abc' });
+Vue.use(d3v, { prefix: 'abc' })
 ```
 
 Results in:

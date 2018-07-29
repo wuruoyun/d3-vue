@@ -2,11 +2,27 @@
 
 > A Vue component library for visualization with [D3](https://d3js.org/).
 
-This library is an attempt to bring the simplicity of Vue and power of D3 together. 
+This library is an attempt to bring the simplicity of Vue and power of D3 together.
+
+## Quick Start
+
+```bash
+npm install d3 @wuruoyun/d3-vue --save
+```
+
+```javascript
+// main.js
+import Vue from 'vue'
+import * as d3v from '@wuruoyun/d3-vue'
+
+Vue.use(d3v)
+```
+
+For more details, refer to [documentation](https://wuruoyun.github.io/d3-vue/)
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 npm install
 
