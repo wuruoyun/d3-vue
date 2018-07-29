@@ -15,17 +15,11 @@ export default {
       }
     }
   },
-  data () {
-    return {
-      x: 0,
-      y: 0
-    }
-  },
   computed: {
     transform () {
-      const { margin, x, y } = this
-      if (margin.left + x !== 0 || margin.top + y !== 0) {
-        return `translate(${margin.left + x},${margin.top + y})`
+      const { margin } = this
+      if (margin.left !== 0 || margin.top !== 0) {
+        return `translate(${margin.left},${margin.top})`
       }
     },
     contentWidth () {

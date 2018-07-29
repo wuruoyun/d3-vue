@@ -1,30 +1,36 @@
 <template>
   <svg class="cartesian" :width="width" :height="height">
     <g :transform="transform">
+      <g>
+        <slot name="north"
+          :scale="scaleX"
+          :width="contentWidth"
+          :height="margin.top"/>
+      </g>
+      <g :transform="`translate(${contentWidth},0)`">
+        <slot name="east"
+          :scale="scaleY"
+          :width="margin.right"
+          :height="contentHeight"/>
+      </g>
+      <g :transform="`translate(0,${contentHeight})`">
+        <slot name="south"
+          :scale="scaleX"
+          :width="contentWidth"
+          :height="margin.bottom"/>
+      </g>
+      <g>
+        <slot name="west"
+          :scale="scaleY"
+          :width="margin.left"
+          :height="contentHeight"/>
+      </g>
       <g clip-path="url(#content-clip)">
         <slot :scaleX="scaleX"
           :scaleY="scaleY"
           :width="contentWidth"
           :height="contentHeight"/>
       </g>
-      <axis v-if="showAxisX"
-        :type="axisX.type"
-        :title="axisX.title"
-        :location="axisLocationX"
-        :options="axisX.options"
-        :scaleX="scaleX"
-        :scaleY="scaleY"
-        :width="contentWidth"
-        :height="contentHeight"/>
-      <axis v-if="showAxisY"
-        :type="axisY.type"
-        :title="axisY.title"
-        :location="axisLocationY"
-        :options="axisY.options"
-        :scaleX="scaleX"
-        :scaleY="scaleY"
-        :width="contentWidth"
-        :height="contentHeight"/>
       <rect v-if="zoom"
         ref="zoom"
         class="zoom"
@@ -48,7 +54,7 @@ export default {
   mixins: [ Region ],
   components: { Axis },
   props: {
-    axisX: {
+    x: {
       type: Object,
       required: true,
       validator: (value) => {
@@ -56,7 +62,7 @@ export default {
         return type && domain
       }
     },
-    axisY: {
+    y: {
       type: Object,
       required: true,
       validator: (value) => {
@@ -84,17 +90,17 @@ export default {
   },
   computed: {
     domainX () {
-      return this.axisX.domain
+      return this.x.domain
     },
     domainY () {
-      return this.axisY.domain
+      return this.y.domain
     },
     defaultScaleX () {
-      const scale = this.buildScale(this.axisX)
+      const scale = this.buildScale(this.x)
       return scale.domain(this.domainX).rangeRound([0, this.contentWidth])
     },
     defaultScaleY () {
-      const scale = this.buildScale(this.axisY)
+      const scale = this.buildScale(this.y)
       return scale.domain(this.domainY).rangeRound([this.contentHeight, 0])
     },
     scaleX () {
@@ -102,18 +108,6 @@ export default {
     },
     scaleY () {
       return this.prefScaleY ? this.prefScaleY : this.defaultScaleY
-    },
-    showAxisX () {
-      return this.axisX.display !== 'none'
-    },
-    showAxisY () {
-      return this.axisY.display !== 'none'
-    },
-    axisLocationX () {
-      return this.axisX.display === 'secondary' ? 'Top' : 'Bottom'
-    },
-    axisLocationY () {
-      return this.axisY.display === 'secondary' ? 'Right' : 'Left'
     }
   },
   methods: {

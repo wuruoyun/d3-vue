@@ -4,12 +4,13 @@ Original D3 demo at [https://bl.ocks.org/mbostock/3887118](https://bl.ocks.org/m
 
 ```html
 <template>
-  <d3-cartesian class="demo" :width="850" :height="450" :axisX="axisX" :axisY="axisY">
+  <d3-cartesian class="demo" :width="850" :height="450" :x="x" :y="y">
     <template slot-scope="props">
-      <d3-points :data="data" x="sepalWidth" y="sepalLength" :color="colorFn"
-        :size="3.5" v-bind="props"/>
+      <d3-points :data="data" x="sepalWidth" y="sepalLength" :color="colorFn" :size="3.5" v-bind="props"/>
       <d3-legend :data="species" label="name" color="color" align="right" :x="800"/>
     </template>
+    <d3-axis slot="south" orientation="Bottom" title="Sepal Width (cm)" slot-scope="props" v-bind="props"/>
+    <d3-axis slot="west" orientation="Left" title="Sepal Length (cm)" slot-scope="props" v-bind="props"/>
   </d3-cartesian>
 </template>
 
@@ -21,16 +22,8 @@ export default {
   data () {
     return {
       data: null,
-      axisX: {
-        type: 'Linear',
-        title: 'Sepal Width (cm)',
-        domain: []
-      },
-      axisY: {
-        type: 'Linear',
-        title: 'Sepal Length (cm)',
-        domain: []
-      },
+      x: { type: 'Linear', domain: [] },
+      y: { type: 'Linear', domain: [] },
       colorFn: null,
       species: []
     }
@@ -41,8 +34,8 @@ export default {
       d.sepalWidth = +d.sepalWidth
       return d
     }).then(data => {
-      this.axisX.domain = d3.extent(data, d => d.sepalWidth)
-      this.axisY.domain = d3.extent(data, d => d.sepalLength)
+      this.x.domain = d3.extent(data, d => d.sepalWidth)
+      this.y.domain = d3.extent(data, d => d.sepalLength)
       this.data = data
 
       const species = [...new Set(data.map(f => f.species))]

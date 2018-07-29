@@ -4,10 +4,10 @@ Original D3 demo at [https://bl.ocks.org/mbostock/3883195](https://bl.ocks.org/m
 
 ```html
 <template>
-  <d3-cartesian :margin="margin" :width="850" :height="450" :axisX="axisX" :axisY="axisY">
-    <template slot-scope="props">
-      <d3-area :data="data" x="date" y="close" v-bind="props"/>
-    </template>
+  <d3-cartesian :width="850" :height="450" :x="x" :y="y">
+    <d3-area :data="data" x="date" y="close" slot-scope="props" v-bind="props"/>
+    <d3-axis slot="south" orientation="Bottom" slot-scope="props" v-bind="props"/>
+    <d3-axis slot="west" orientation="Left" title="Price ($)" slot-scope="props" v-bind="props"/>
   </d3-cartesian>
 </template>
 
@@ -19,9 +19,8 @@ const parseTime = d3.timeParse("%d-%b-%y")
 export default {
   data () {
     return {
-      margin: { top: 20, right: 20, bottom: 30, left: 50 },
-      axisX: { type: 'Time', domain: [] },
-      axisY: { type: 'Linear', title: "Price ($)", domain: [] },
+      x: { type: 'Time', domain: [] },
+      y: { type: 'Linear', domain: [] },
       data: []
     }
   },
@@ -32,25 +31,12 @@ export default {
         d.close = +d.close
         return d
       }).then(data => {
-        this.axisX.domain = d3.extent(data, d => d.date)
-        this.axisY.domain = [0, d3.max(data, d => d.close)]
+        this.x.domain = d3.extent(data, d => d.date)
+        this.y.domain = [0, d3.max(data, d => d.close)]
         this.data = data
       })
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.demo /deep/ {
-  .axis--x path {
-    display: none;
-  }
-  .line {
-    fill: none;
-    stroke: steelblue;
-    stroke-width: 1.5px;
-  }
-}
-</style>
 <!-- area-chart-demo.vue -->
 ````

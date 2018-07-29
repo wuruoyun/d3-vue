@@ -1,88 +1,64 @@
 <template>
-  <g :class="axisClass" :transform="transform"></g>
+  <g class="axis"></g>
 </template>
 
 <script>
 import * as d3 from 'd3'
-import CartesianChild from '../mixins/CartesianChild'
 import Text from './Text.vue'
 
 export default {
-  mixins: [ CartesianChild ],
   components: { 'd3-text': Text },
   props: {
-    type: {
-      type: String,
-      default: 'Linear'
-    },
     title: {
       type: String,
       required: false
     },
-    location: {
+    orientation: {
       type: String,
       default: 'Bottom'
+    },
+    scale: {
+      type: Function,
+      required: true
+    },
+    width: {
+      type: Number,
+      required: true
+    },
+    height: {
+      type: Number,
+      required: true
     },
     options: {
       type: Object,
       default: () => {}
     }
   },
-  computed: {
-    isX () {
-      return this.location === 'Bottom' || this.location === 'Top'
-    },
-    isY () {
-      return this.location === 'Left' || this.location === 'Right'
-    },
-    axisClass () {
-      return `axis axis--${this.isX ? 'x' : 'y'}`
-    },
-    transform () {
-      if (this.location === 'Bottom') {
-        return `translate(0,${this.height})`
-      } else if (this.location === 'Right') {
-        return `translate(${this.width},0)`
-      }
-    },
-    scale () {
-      return this.isX ? this.scaleX: this.scaleY
-    }
-  },
   watch: {
-    scaleX (val) {
-      if (this.isX) {
-        this.update()
-      }
+    scale (val) {
+      this.update()
     },
-    scaleY (val) {
-      if (this.isY) {
-        this.update()
-      }
+    title (val) {
+      this.update()
     },
-    location (val) {
+    options (val) {
       this.update()
     }
   },
   methods: {
     update () {
-      const { type, title, location, scale, options, width } = this
-      const axis = d3[`axis${location}`](scale)
+      const { title, orientation, scale, options } = this
+      const axis = d3[`axis${orientation}`](scale)
       if (options) {
-        switch (type) {
-          case 'Linear':
-          case 'Log':
-            const { ticks, tickSize, tickPadding } = options
-            if (ticks) axis.ticks(ticks.count, ticks.specifier)
-            if (tickSize) axis.tickSize(tickSize)
-            if (tickPadding) axis.tickPadding(tickPadding)
-            break
-        }
+        const { ticks, tickSize, tickPadding } = options
+        if (ticks) axis.ticks(ticks.count, ticks.specifier)
+        if (tickSize) axis.tickSize(tickSize)
+        if (tickPadding) axis.tickPadding(tickPadding)
       }
       const g = d3.select(this.$el).call(axis)
 
       if (title) {
-        switch (location) {
+        switch (orientation) {
           case 'Left':
             if (options && options.titleLastTick) {
               g.select('.tick:last-of-type text')
@@ -115,7 +91,7 @@ export default {
               g.append('text')
                 .attr('class', 'label')
                 .attr('fill', 'black')
-                .attr("x", width)
+                .attr("x", this.width)
                 .attr("y", -6)
                 .style("text-anchor", "end")
                 .text(title)

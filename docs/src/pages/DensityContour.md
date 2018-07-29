@@ -4,10 +4,12 @@ Original D3 demo at [https://bl.ocks.org/mbostock/7f5f22524bd1d824dd53c535eda018
 
 ```html
 <template>
-  <d3-cartesian class="demo" :width="850" :height="550" :axisX="axisX" :axisY="axisY">
-    <template slot-scope="props">
-      <d3-contour :data="data" x="carat" y="price" :colorFn="colorFn" v-bind="props"/>
-    </template>
+  <d3-cartesian class="demo" :width="850" :height="550" :x="x" :y="y">
+    <d3-contour :data="data" x="carat" y="price" :colorFn="colorFn" slot-scope="props" v-bind="props"/>
+    <d3-axis slot="south" orientation="Bottom" title="Carats" :options="optionsX"
+      slot-scope="props" v-bind="props"/>
+    <d3-axis slot="west" orientation="Left" title="Price (USD)" :options="optionsY"
+      slot-scope="props" v-bind="props"/>
   </d3-cartesian>
 </template>
 
@@ -19,23 +21,15 @@ export default {
   data () {
     return {
       data: null,
-      axisX: {
-        type: 'Log',
-        title: 'Carats',
-        domain: [2e-1, 5e0],
-        options: {
-          ticks: { count: null, specifier: ".1f"},
-          titleLastTick: true
-        }
+      x: { type: 'Log', domain: [2e-1, 5e0] },
+      optionsX: {
+        ticks: { count: null, specifier: ".1f"},
+        titleLastTick: true
       },
-      axisY: {
-        type: 'Log',
-        title: 'Price (USD)',
-        domain: [3e2, 2e4],
-        options: {
-          ticks: { count: null, specifier: ".1s"},
-          titleLastTick: true
-        }
+      y: { type: 'Log', domain: [3e2, 2e4] },
+      optionsY: {
+        ticks: { count: null, specifier: ".1s"},
+        titleLastTick: true
       },
       colorFn: null
     }

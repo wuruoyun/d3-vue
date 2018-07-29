@@ -4,12 +4,14 @@ Original D3 demo at [https://bl.ocks.org/mbostock/3035090](https://bl.ocks.org/m
 
 ```html
 <template>
-  <d3-cartesian class="demo" :margin="margin" :width="850" :height="450" :axisX="axisX" :axisY="axisY">
+  <d3-cartesian class="demo" :margin="margin" :width="850" :height="450" :x="x" :y="y">
     <template slot-scope="props">
       <d3-line :data="data" x="x" y="y" :definedFn="d => d" v-bind="props"/>
       <d3-area :data="data" x="x" y="y" :definedFn="d => d" v-bind="props"/>
       <d3-points :data="filtered" x="x" y="y" :size="3.5" v-bind="props"/>
     </template>
+    <d3-axis slot="south" orientation="Bottom" slot-scope="props" v-bind="props"/>
+    <d3-axis slot="west" orientation="Left" slot-scope="props" v-bind="props"/>
   </d3-cartesian>
 </template>
 
@@ -20,8 +22,8 @@ export default {
   data () {
     return {
       margin: { top: 30, right: 30, bottom: 30, left: 30 },
-      axisX: { type: 'Linear', domain: [0, 1] },
-      axisY: { type: 'Linear', domain: [0, 1] },
+      x: { type: 'Linear', domain: [0, 1] },
+      y: { type: 'Linear', domain: [0, 1] },
       data: []
     }
   },

@@ -4,35 +4,30 @@ Original D3 demo at [https://bl.ocks.org/mbostock/f48fcdb929a620ed97877e4678ab15
 
 ```html
 <template>
-  <d3-cartesian ref="cartesian" class="demo" :margin="margin" :width="width" :height="height"
-    :axisX="axisX" :axisY="axisY">
+  <d3-cartesian class="demo" :margin="margin" :width="width" :height="height" :x="x" :y="y">
     <d3-points :data="data" :x="d => d[0]" :y="d => d[1]" :color="colorFn" :size="2.5"
+      slot-scope="props" v-bind="props"/>
+    <d3-axis slot="south" orientation="Top" transform="translate(0,-10)" :options="optionsX"
+      slot-scope="props" v-bind="props"/>
+    <d3-axis slot="west" orientation="Right" transform="translate(10,0)" :options="optionsY"
       slot-scope="props" v-bind="props"/>
   </d3-cartesian>
 </template>
 
 <script>
 import * as d3 from 'd3'
-import '../../data/sp500.csv'
-const parseDate = d3.timeParse("%b %Y")
 
 export default {
   data () {
     return {
       width: 900, height: 500,
       margin: { top: 0, right: 0, bottom: 0, left: 0},
-      axisX: { type: 'Linear', domain: [] },
-      axisY: { type: 'Linear', domain: [] },
+      x: { type: 'Linear', domain: [] },
+      y: { type: 'Linear', domain: [] },
+      optionsX: { ticks: { count: 12 } },
+      optionsY: null,
       colorFn: null,
       data: []
-    }
-  },
-  methods: {
-    zoomed (domain) {
-      this.$refs.brush.moveTo(domain)
-    },
-    brushed (domain) {
-      this.$refs.cartesian.zoomToX(domain)
     }
   },
   created () {
@@ -44,15 +39,22 @@ export default {
     this.data = d3.merge([points0, points1, points2])
 
     const k = this.height / this.width
-    this.axisX.domain = [-4.5, 4.5]
-    this.axisY.domain = [-4.5 * k, 4.5 * k]
-    this.axisX.options = { ticks: { count: 12 } }
-    this.axisY.options = { ticks: { count: 12 * k } }
+    this.x.domain = [-4.5, 4.5]
+    this.y.domain = [-4.5 * k, 4.5 * k]
+    this.optionsY = { ticks: { count: 12 * k } }
 
     const colorScale = d3.scaleOrdinal(d3.schemeCategory10)
     this.colorFn = d => colorScale(d[2])
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.demo /deep/ {
+  .axis path {
+    display: none;
+  }
+}
+</style>
 <!-- brush-and-zoom-ii-demo.vue -->
 ````

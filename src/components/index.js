@@ -1,4 +1,5 @@
 import Area from './Area.vue'
+import Axis from './Axis.vue'
 import Bars from './Bars.vue'
 import Brush from './Brush.vue'
 import Cartesian from './Cartesian.vue'
@@ -14,6 +15,7 @@ import Text from './Text.vue'
 
 export {
   Area,
+  Axis,
   Bars,
   Brush,
   Cartesian,
