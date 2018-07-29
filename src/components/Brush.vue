@@ -57,6 +57,11 @@ export default {
       this.update()
       this.silent = false // resume brush listener
     },
+    reset () {
+      this.silent = true // disable brusher listener
+      d3.select(this.$el).call(this.brushFn.move, null)
+      this.silent = false // resume brush listener
+    },
     brushedX (end) {
       if (this.silent || !d3.event) return
       const { scaleX } = this
@@ -75,11 +80,15 @@ export default {
       if (this.silent || !d3.event) return
       const { scaleX, scaleY } = this
       const s = d3.event.selection
-      const selectionX = s ? [s[0][0], s[1][0]] : scaleX.range()
-      const selectionY = s ? [s[0][1], s[1][1]] : scaleY.range()
-      const x = selectionX.map(scaleX.invert, scaleX)
-      const y = selectionY.map(scaleY.invert, scaleY)
-      this.$emit(end ? 'end' : 'brush', { x, y: [y[1], y[0]] })
+      if (s) {
+        const selectionX = s ? [s[0][0], s[1][0]] : scaleX.range()
+        const selectionY = s ? [s[0][1], s[1][1]] : scaleY.range()
+        const x = selectionX.map(scaleX.invert, scaleX)
+        const y = selectionY.map(scaleY.invert, scaleY)
+        this.$emit(end ? 'end' : 'brush', { x, y: [y[1], y[0]] })
+      } else {
+        this.$emit(end ? 'end' : 'brush', null)
+      }
     },
     update () {
       const { $el, brushFn, rangeX, rangeY } = this

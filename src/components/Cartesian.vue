@@ -161,15 +161,17 @@ export default {
       if (zoom) {
         console.error('Interactive zoom is not disabled.')
       } else {
-        const x = [defaultScaleX(domain.x[0]), defaultScaleX(domain.x[1])]
-        const y = [defaultScaleY(domain.y[0]), defaultScaleY(domain.y[1])]
         this.prefScaleX = defaultScaleX.copy().domain(domain.x)
         this.prefScaleY = defaultScaleY.copy().domain(domain.y)
-        this.silent = true
-        d3.select(this.$refs.zoom).call(this.zoomFn.transform, d3.zoomIdentity
-          .scale(contentWidth / (x[1] - x[0]), contentHeight / (y[0] - y[1]))
-          .translate(-x[0], -y[1]))
-        this.silent = false
+        if (zoom) {
+          const x = [defaultScaleX(domain.x[0]), defaultScaleX(domain.x[1])]
+          const y = [defaultScaleY(domain.y[0]), defaultScaleY(domain.y[1])]
+          this.silent = true
+          d3.select(this.$refs.zoom).call(this.zoomFn.transform, d3.zoomIdentity
+            .scale(contentWidth / (x[1] - x[0]), contentHeight / (y[0] - y[1]))
+            .translate(-x[0], -y[1]))
+          this.silent = false
+        }
       }
     },
     resetZoom (orientation) {

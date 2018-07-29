@@ -4,10 +4,10 @@ Original D3 demo at [https://bl.ocks.org/mbostock/f48fcdb929a620ed97877e4678ab15
 
 ```html
 <template>
-  <d3-cartesian class="demo" :margin="margin" :width="width" :height="height" :x="x" :y="y">
+  <d3-cartesian ref="cartesian" class="demo" :margin="margin" :width="width" :height="height" :x="x" :y="y">
     <template slot-scope="props">
       <d3-points :data="data" :x="d => d[0]" :y="d => d[1]" :color="colorFn" :size="2.5" v-bind="props"/>
-      <d3-brush orientation="xy" @end="brushEnd" v-bind="props"/>/>
+      <d3-brush ref="brush" orientation="xy" @end="brushEnd" v-bind="props"/>/>
     </template>
     <d3-axis slot="south" orientation="Top" transform="translate(0,-10)" :options="optionsX"
       slot-scope="props" v-bind="props"/>
@@ -34,7 +34,12 @@ export default {
   },
   methods: {
     brushEnd (domain) {
-      console.log(domain)
+      if (domain) {
+        this.$refs.cartesian.zoomTo(domain)
+        this.$refs.brush.reset()
+      } else {
+        this.$refs.cartesian.resetZoom()
+      }
     }
   },
   created () {
