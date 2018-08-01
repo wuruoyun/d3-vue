@@ -8,7 +8,7 @@ Original D3 demo at [https://bl.ocks.org/mbostock/3885304](https://bl.ocks.org/m
     <d3-bars :data="data" x="letter" y="frequency" slot-scope="props" v-bind="props"/>
     <d3-axis slot="south" class="axis--x" orientation="Bottom" :options="optionsX"
       slot-scope="props" v-bind="props"/>
-    <d3-axis slot="west" orientation="Left" title="Price ($)" :options="optionsY"
+    <d3-axis slot="west" orientation="Left" :options="optionsY"
       slot-scope="props" v-bind="props"/>
   </d3-cartesian>
 </template>
