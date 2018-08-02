@@ -34,9 +34,23 @@ export default {
       default: () => {}
     }
   },
+  computed: {
+    axis () {
+      const { orientation, scale, options } = this
+      const axis = d3[`axis${orientation}`](scale)
+      if (options) {
+        const { ticks, tickSize, tickPadding } = options
+        if (ticks) axis.ticks(ticks.count, ticks.specifier)
+        if (tickSize) axis.tickSize(tickSize)
+        if (tickPadding) axis.tickPadding(tickPadding)
+      }
+      return axis
+    }
+  },
   watch: {
-    scale (val) {
-      this.update()
+    axis (val) {
+      const { title, orientation, axis, options } = this
+      d3.select(this.$el).transition().call(axis)
     },
     title (val) {
       this.update()
@@ -47,14 +61,7 @@ export default {
   },
   methods: {
     update () {
-      const { title, orientation, scale, options } = this
-      const axis = d3[`axis${orientation}`](scale)
-      if (options) {
-        const { ticks, tickSize, tickPadding } = options
-        if (ticks) axis.ticks(ticks.count, ticks.specifier)
-        if (tickSize) axis.tickSize(tickSize)
-        if (tickPadding) axis.tickPadding(tickPadding)
-      }
+      const { title, orientation, axis, options } = this
       const g = d3.select(this.$el).call(axis)
 
       if (title) {

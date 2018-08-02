@@ -38,6 +38,9 @@ export default {
     },
     scaledYFn () {
       return d => this.scaleY(this.yFn(d))
+    },
+    scales () {
+      return { x: this.scaleX, y: this.scaleY }
     }
   },
   watch: {
