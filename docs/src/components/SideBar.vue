@@ -47,7 +47,8 @@ export default {
             { to: '/brush-and-zoom-ii', title: 'Brush & Zoom II' },
             { to: '/choropleth', title: 'Choropleth' },
             { to: '/density-contour', title: 'Density Contour' },
-            { to: '/missing-data', title: 'Missing Data' }
+            { to: '/missing-data', title: 'Missing Data' },
+            { to: '/treemap', title: 'Treemap' }
           ]
         }
       ]

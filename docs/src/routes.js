@@ -9,6 +9,7 @@ import LineChart from './pages/LineChart.md'
 import MissingData from './pages/MissingData.md'
 import PieChart from './pages/PieChart.md'
 import ScatterPlot from './pages/ScatterPlot.md'
+import Treemap from './pages/Treemap.md'
 
 export default [
   { path: '/quick-start', component: QuickStart },
@@ -22,5 +23,6 @@ export default [
   { path: '/missing-data', component: MissingData },
   { path: '/pie-chart', component: PieChart },
   { path: '/scatter-plot', component: ScatterPlot },
+  { path: '/treemap', component: Treemap },
   { path: '*', redirect: '/quick-start' }
 ]

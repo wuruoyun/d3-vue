@@ -11,6 +11,7 @@ import Line from './Line.vue'
 import Pie from './Pie.vue'
 import Points from './Points.vue'
 import Text from './Text.vue'
+import Treemap from './Treemap.vue'
 
 export {
   Area,
@@ -25,5 +26,6 @@ export {
   Line,
   Pie,
   Points,
-  Text
+  Text,
+  Treemap
 }
