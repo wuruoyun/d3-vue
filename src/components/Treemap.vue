@@ -25,8 +25,12 @@ export default {
       type: Object,
       required: true
     },
+    nameFn: {
+      type: Function,
+      default: node => node.name
+    },
     labelFn: {
-      type: String,
+      type: Function,
       required: false
     },
     valueFn: {
@@ -45,33 +49,33 @@ export default {
         .size([this.contentWidth, this.contentHeight])
         .round(true)
         .paddingInner(1)
+    },
+    root () {
+      const root = d3.hierarchy(this.data)
+        .eachBefore(d => {
+          d.data.id = (d.parent ? d.parent.data.id + "." : "") + this.nameFn(d.data)
+        })
+      return root
     }
   },
   watch: {
-    data (val) {
-      this.update()
+    valueFn (val) {
+      this.treemap(this.root.sum(val))
+      const cell = d3.select(this.$refs.content).selectAll("g")
+      cell.transition().attr("transform", d => `translate(${d.x0},${d.y0})`)
+        .select("rect")
+          .attr("width", d => d.x1 - d.x0)
+          .attr("height", d => d.y1 - d.y0)
     }
   },
   methods: {
     update () {
-      const { data, pie, colorFn, labelFn, treemap } = this
+      const { data, valueFn, colorFn, labelFn, root } = this
 
       if (!data) return
 
-      const fader = color => d3.interpolateRgb(color, "#fff")(0.2)
-      const color = d3.scaleOrdinal(d3.schemePaired.map(fader))
-      const format = d3.format(",d")
-
-      const root = d3.hierarchy(data)
-          .eachBefore(d => {
-            d.data.id = (d.parent ? d.parent.data.id + "." : "") + d.data.name
-          })
-          .sum(sumBySize)
-          .sort((a, b) => {
-            return b.height - a.height || b.value - a.value
-          })
-
-      treemap(root);
+      root.sum(valueFn).sort((a, b) => b.height - a.height || b.value - a.value)
+      this.treemap(root)
 
       const cell = d3.select(this.$refs.content).selectAll("g")
         .data(root.leaves())
@@ -82,24 +86,25 @@ export default {
           .attr("id", d => d.data.id)
           .attr("width", d => d.x1 - d.x0)
           .attr("height", d => d.y1 - d.y0)
-          .attr("fill", d => color(d.parent.data.id));
+          .attr("fill", d => colorFn(d.parent.data.id))
 
       cell.append("clipPath")
           .attr("id", d => "clip-" + d.data.id)
         .append("use")
-          .attr("xlink:href", d => "#" + d.data.id);
+          .attr("xlink:href", d => "#" + d.data.id)
 
       cell.append("text")
           .attr("clip-path", d => "url(#clip-" + d.data.id + ")")
         .selectAll("tspan")
-          .data(d => d.data.name.split(/(?=[A-Z][^A-Z])/g))
+          .data(d => labelFn(d.data))
         .enter().append("tspan")
           .attr("x", 4)
           .attr("y", (d, i) => 13 + i * 10)
-          .text(d => d);
+          .text(d => d)
 
+      const format = d3.format(",d")
       cell.append("title")
-          .text(d => d.data.id + "\n" + format(d.value));
+          .text(d => d.data.id + "\n" + format(d.value))
     }
   },
   mounted () {
