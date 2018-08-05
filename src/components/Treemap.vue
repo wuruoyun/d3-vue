@@ -10,14 +10,6 @@
 import * as d3 from 'd3'
 import Region from '../mixins/Region'
 
-function sumByCount(d) {
-  return d.children ? 0 : 1;
-}
-
-function sumBySize(d) {
-  return d.size;
-}
-
 export default {
   mixins: [ Region ],
   props: {
