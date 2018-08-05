@@ -5,12 +5,9 @@ Original D3 demo at [https://bl.ocks.org/mbostock/4063582](https://bl.ocks.org/m
 ```html
 <template>
   <div class="demo">
-    <d3-treemap :width="930" :height="550"
-      :data="data"
-      :nameFn="nameFn"
+    <d3-treemap :width="930" :height="550" :data="data" :nameFn="nameFn"
       :valueFn="picked === 'size' ? sumBySize : sumByCount"
-      :labelFn="labelFn"
-      :colorFn="colorFn"/>
+      :labelFn="labelFn" :colorFn="colorFn"/>
     <input type="radio" value="size" v-model="picked"><label>Size</label>
     <input type="radio" value="count" v-model="picked"><label>Count</label>
   </div>
@@ -22,9 +19,7 @@ import data from '../../data/flare.json'
 
 export default {
   data () {
-    return {
-      picked: 'size'
-    }
+    return { picked: 'size' }
   },
   created () {
     this.data = data
