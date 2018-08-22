@@ -6,7 +6,8 @@ Original D3 demo at [https://bl.ocks.org/mbostock/f48fcdb929a620ed97877e4678ab15
 <template>
   <d3-cartesian ref="cartesian" class="demo" :margin="margin" :width="width" :height="height" :x="x" :y="y">
     <template slot-scope="props">
-      <d3-points :data="data" :x="d => d[0]" :y="d => d[1]" :color="colorFn" :size="2.5" v-bind="props"/>
+      <d3-points :data="data" :x="d => d[0]" :y="d => d[1]" :color="colorFn" :size="2.5"
+        animated v-bind="props"/>
       <d3-brush ref="brush" orientation="xy" @end="brushEnd" v-bind="props"/>/>
     </template>
     <d3-axis slot="south" orientation="Top" transform="translate(0,-10)" :options="optionsX"

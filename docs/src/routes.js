@@ -5,6 +5,7 @@ import BrushAndZoom from './pages/BrushAndZoom.md'
 import BrushAndZoomII from './pages/BrushAndZoomII.md'
 import Choropleth from './pages/Choropleth.md'
 import DensityContour from './pages/DensityContour.md'
+import GridLines from './pages/GridLines.md'
 import LineChart from './pages/LineChart.md'
 import MissingData from './pages/MissingData.md'
 import PieChart from './pages/PieChart.md'
@@ -19,6 +20,7 @@ export default [
   { path: '/brush-and-zoom-ii', component: BrushAndZoomII },
   { path: '/choropleth', component: Choropleth },
   { path: '/density-contour', component: DensityContour },
+  { path: '/grid-lines', component: GridLines },
   { path: '/line-chart', component: LineChart },
   { path: '/missing-data', component: MissingData },
   { path: '/pie-chart', component: PieChart },

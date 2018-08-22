@@ -4,7 +4,7 @@ Original D3 demo at [https://bl.ocks.org/mbostock/3884955](https://bl.ocks.org/m
 
 ```html
 <template>
-  <d3-cartesian class="demo" :margin="margin" :width="850" :height="450" :x="x" :y="y">
+  <d3-cartesian class="demo" :margin="margin" :width="900" :height="450" :x="x" :y="y">
     <template slot-scope="props">
       <d3-line v-for="city in cities" :key="city.id" :data="city.values" x="date" y="temperature"
         :color="city.color" :curveFn ="curveFn" v-bind="props"/>

@@ -4,7 +4,7 @@ Original D3 demo at [https://bl.ocks.org/mbostock/3883195](https://bl.ocks.org/m
 
 ```html
 <template>
-  <d3-cartesian :width="850" :height="450" :x="x" :y="y">
+  <d3-cartesian :width="900" :height="450" :x="x" :y="y">
     <d3-area :data="data" x="date" y="close" slot-scope="props" v-bind="props"/>
     <d3-axis slot="south" orientation="Bottom" slot-scope="props" v-bind="props"/>
     <d3-axis slot="west" orientation="Left" title="Price ($)" slot-scope="props" v-bind="props"/>

@@ -4,7 +4,7 @@ Original D3 demo at [https://bl.ocks.org/mbostock/3887235](https://bl.ocks.org/m
 
 ```html
 <template>
-  <d3-pie class="demo" :width="850" :height="450" :outerRadius="200"
+  <d3-pie class="demo" :width="900" :height="450" :outerRadius="200"
     :data="data" label="age" value="population" color="color"/>
 </template>
 

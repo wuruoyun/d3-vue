@@ -19,7 +19,7 @@ export default {
     },
     animated: {
       type: Boolean,
-      default: true
+      default: false
     }
   },
   computed: {

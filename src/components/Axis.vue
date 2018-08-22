@@ -49,8 +49,7 @@ export default {
   },
   watch: {
     axis (val) {
-      const { title, orientation, axis, options } = this
-      d3.select(this.$el).transition().call(axis)
+      d3.select(this.$el).transition().call(val)
     },
     title (val) {
       this.update()
