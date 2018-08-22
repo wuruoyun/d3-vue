@@ -38,8 +38,8 @@ export default {
       const axis = orientation === 'Horizontal'
         ? d3['axisLeft'](scaleY) : d3['axisBottom'](scaleX)
       if (options) {
-        const { ticks } = options
-        if (ticks) axis.ticks(ticks.count, ticks.specifier)
+        const { count } = options
+        if (count) axis.ticks(count)
       }
       const tickSize = orientation === 'Horizontal' ? -width : height
       axis.tickSize(tickSize).tickFormat('')

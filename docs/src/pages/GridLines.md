@@ -26,7 +26,7 @@ export default {
       x: { type: 'Time', domain: [] },
       y: { type: 'Linear', domain: [] },
       data: null,
-      gridLineOptions: { ticks: { count: 5 } }
+      gridLineOptions: { count: 5 }
     }
   },
   created () {
