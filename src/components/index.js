@@ -2,6 +2,7 @@ import Area from './Area.vue'
 import Axis from './Axis.vue'
 import Bars from './Bars.vue'
 import Brush from './Brush.vue'
+import CandleSticks from './CandleSticks.vue'
 import Cartesian from './Cartesian.vue'
 import ColorBar from './ColorBar.vue'
 import Contour from './Contour.vue'
@@ -19,6 +20,7 @@ export {
   Axis,
   Bars,
   Brush,
+  CandleSticks,
   Cartesian,
   ColorBar,
   Contour,

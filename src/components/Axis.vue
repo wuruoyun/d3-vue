@@ -39,7 +39,9 @@ export default {
       const { orientation, scale, options } = this
       const axis = d3[`axis${orientation}`](scale)
       if (options) {
-        const { ticks, tickSize, tickPadding } = options
+        const { ticks, tickSize, tickPadding, tickValues, tickFormat } = options
+        if (tickValues) axis.tickValues(tickValues)
+        if (tickFormat) axis.tickFormat(tickFormat)
         if (ticks) axis.ticks(ticks.count, ticks.specifier)
         if (tickSize) axis.tickSize(tickSize)
         if (tickPadding) axis.tickPadding(tickPadding)
@@ -52,9 +54,6 @@ export default {
       d3.select(this.$el).transition().call(val)
     },
     title (val) {
-      this.update()
-    },
-    options (val) {
       this.update()
     }
   },

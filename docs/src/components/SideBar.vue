@@ -45,6 +45,7 @@ export default {
           pages: [
             { to: '/brush-and-zoom', title: 'Brush & Zoom' },
             { to: '/brush-and-zoom-ii', title: 'Brush & Zoom II' },
+            { to: '/candle-stick', title: 'Candlestick Chart' },
             { to: '/choropleth', title: 'Choropleth' },
             { to: '/density-contour', title: 'Density Contour' },
             { to: '/grid-lines', title: 'Grid Lines' },
