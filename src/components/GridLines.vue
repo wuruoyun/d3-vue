@@ -64,3 +64,16 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.grid /deep/ {
+  line {
+    stroke: lightgrey;
+    stroke-opacity: 0.7;
+    shape-rendering: crispEdges;
+  }
+  path {
+    stroke-width: 0;
+  }
+}
+</style>

@@ -57,16 +57,6 @@ export default {
   .axis path {
     display: none;
   }
-  .grid {
-    line {
-      stroke: lightgrey;
-      stroke-opacity: 0.7;
-      shape-rendering: crispEdges;
-    }
-    path {
-      stroke-width: 0;
-    }
-  }
 }
 </style>
 <!-- candlestick-chart-demo.vue -->
