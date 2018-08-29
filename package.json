@@ -80,5 +80,13 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "license": "MIT",
+  "keywords": [
+    "d3", "vue"
+  ],
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/wuruoyun/d3-vue.git"
+  }
 }
