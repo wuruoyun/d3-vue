@@ -17,6 +17,11 @@ export default {
           pages: [
             { to: 'quick-start', title: 'Quick start' }
           ]
+        }, {
+          title: 'Components',
+          pages: [
+            { to: 'cartesian', title: 'Cartesian' }
+          ]
         }
       ]
     }
