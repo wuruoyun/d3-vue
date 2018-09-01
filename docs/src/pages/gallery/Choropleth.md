@@ -4,8 +4,8 @@ Original D3 demo at [https://bl.ocks.org/mbostock/4060606](https://bl.ocks.org/m
 
 ```html
 <template>
-  <d3-country class="demo" :width="960" :height="600" :data="us" :countyColorFn="colorFn">
-    <d3-color-bar :x="580" :y="35" :colorScale="color" :domain="[1, 10]"
+  <d3-country class="demo" :width="860" :height="600" :data="us" :countyColorFn="colorFn">
+    <d3-color-bar :x="580" :y="20" :colorScale="color" :domain="[1, 10]"
       title="Unemployment rate" :tickFormat="(x, i) => i ? x : x + '%'"/>
   </d3-country>
 </template>

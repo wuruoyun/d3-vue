@@ -4,7 +4,7 @@ Original D3 demo at [https://beta.observablehq.com/@mbostock/d3-candlestick-char
 
 ```html
 <template>
-  <d3-cartesian class="demo" :margin="margin" :width="900" :height="450" :x="x" :y="y">
+  <d3-cartesian class="demo" :margin="margin" :width="860" :height="450" :x="x" :y="y">
     <template slot-scope="props">
       <d3-grid-lines orientation="Horizontal" v-bind="props"/>
       <d3-candle-sticks :data="data" v-bind="props"/>

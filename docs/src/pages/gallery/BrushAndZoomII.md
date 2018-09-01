@@ -23,7 +23,7 @@ import * as d3 from 'd3'
 export default {
   data () {
     return {
-      width: 900, height: 500,
+      width: 860, height: 500,
       margin: { top: 0, right: 0, bottom: 0, left: 0},
       x: { type: 'Linear', domain: [] },
       y: { type: 'Linear', domain: [] },

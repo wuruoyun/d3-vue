@@ -4,7 +4,7 @@ Original D3 demo at [https://bl.ocks.org/mbostock/7f5f22524bd1d824dd53c535eda018
 
 ```html
 <template>
-  <d3-cartesian class="demo" :width="900" :height="550" :x="x" :y="y">
+  <d3-cartesian class="demo" :width="860" :height="550" :x="x" :y="y">
     <d3-contour :data="data" x="carat" y="price" :colorFn="colorFn" slot-scope="props" v-bind="props"/>
     <d3-axis slot="south" orientation="Bottom" title="Carats" :options="optionsX"
       slot-scope="props" v-bind="props"/>

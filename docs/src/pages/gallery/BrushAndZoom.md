@@ -5,13 +5,13 @@ Original D3 demo at [https://bl.ocks.org/mbostock/34f08d5e11952a80609169b7917d41
 ```html
 <template>
   <div class="demo">
-    <d3-cartesian ref="cartesian" :margin="margin" :width="900" :height="350"
+    <d3-cartesian ref="cartesian" :margin="margin" :width="860" :height="350"
       :x="x" :y="y" zoom="x" @zoom="zoomed">
       <d3-area :data="data" x="date" y="price" :curveFn ="curveFn" slot-scope="props" v-bind="props"/>
       <d3-axis slot="south" orientation="Bottom" slot-scope="props" v-bind="props"/>
       <d3-axis slot="west" orientation="Left" slot-scope="props" v-bind="props"/>
     </d3-cartesian>
-    <d3-cartesian :margin="margin" :width="900" :height="100" :x="x2" :y="y">
+    <d3-cartesian :margin="margin" :width="860" :height="100" :x="x2" :y="y">
       <template slot-scope="props">
         <d3-area :data="data" x="date" y="price" :curveFn ="curveFn" v-bind="props"/>
         <d3-brush ref="brush" orientation="x" @brush="brushed" v-bind="props"/>

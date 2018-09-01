@@ -4,7 +4,7 @@ Original D3 demo at [https://bl.ocks.org/d3noob/c506ac45617cf9ed39337f99f8511218
 
 ```html
 <template>
-  <d3-cartesian class="demo" :width="900" :height="450" :x="x" :y="y">
+  <d3-cartesian class="demo" :width="860" :height="450" :x="x" :y="y">
     <template slot-scope="props">
       <d3-grid-lines orientation="Horizontal" :options="gridLineOptions" v-bind="props"/>
       <d3-grid-lines orientation="Vertical" :options="gridLineOptions" v-bind="props"/>

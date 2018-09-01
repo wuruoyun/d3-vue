@@ -1,11 +1,27 @@
 # Cartesian
 
-Cartesian serves as the top-level contains for charts that use Cartesian coordinate system.
+Cartesian serves as the top-level component for charts that use Cartesian coordinate system. It contains children component such as lines, points, axis, etc. It creates the D3 scales for X and Y based on configuration prop, and injects the scales, along with other data, into the components in its slots via slot scope.
 
 ```html
-<d3-cartesian class="demo" :margin="margin" :width="900" :height="450" :x="x" :y="y">
-  <d3-line :data="data" slot-scope="props" v-bind="props"/>
-</d3-cartesian>
+<template>
+  <d3-cartesian :width="800" :height="250" :x="{ type: 'Linear', domain: [0, 100] }"
+    :y="{ type: 'Linear', domain: [0, 100] }">
+    <template slot-scope="props">
+      <d3-line :data="data" v-bind="props"/>
+      <d3-points :data="data" v-bind="props"/>
+    </template>
+    <d3-axis slot="south" orientation="Bottom" slot-scope="props" v-bind="props"/>
+    <d3-axis slot="west" orientation="Left" slot-scope="props" v-bind="props"/>
+  </d3-cartesian>
+</template>
+<script>
+export default {
+  created () {
+    this.data = [ { x: 10, y: 20 }, { x: 30, y: 40 }, { x: 60, y: 50 }, { x: 90, y: 95 } ]
+  }
+}
+</script>
+<!-- cartesian-demo.vue -->
 ```
 
 ## Props
@@ -19,19 +35,19 @@ Name             | Type       | Default      | Required | Description
 
 ## Slots
 
-Slot             | Description
----------------- | -----------------------
-`default`        | The content area of the chart
-`north`          | The north region in the chart margin
-`east`           | The east region in the chart margin
-`south`          | The south region in the chart margin
-`west`           | The west region in the chart margin
+Slot             | Slot Props       | Description
+---------------- | ---------------- | -----------------------
+`default`        | `scaleX`, `scaleY`, `width`, `height` | The content area of the chart.
+`north`          | `scale`, `width`, `height` | The north region in the chart margin. The `scale` is for X axis.
+`east`           | `scale`, `width`, `height` | The east region in the chart margin. The `scale` is for Y axis.
+`south`          | `scale`, `width`, `height` | The south region in the chart margin. The `scale` is for X axis.
+`west`           | `scale`, `width`, `height` | The west region in the chart margin. The `scale` is for Y axis.
 
 ## Events
 
-Event            | Params          | Description
+Event            | Payload         | Description
 ---------------- | --------------- | -----------------------
-`zoom`           | `x, y`          | When zoom occurs in the chart. The `x` and `y` are in domain unit
+`zoom`           | `{ x: [x1, x2], y: [y1, y2]}` | When zoom occurs in the chart. The `x` and `y` are the new domain ranges after zooming took place.
 
 ## Methods
 

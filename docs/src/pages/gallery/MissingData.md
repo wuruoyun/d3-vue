@@ -4,7 +4,7 @@ Original D3 demo at [https://bl.ocks.org/mbostock/3035090](https://bl.ocks.org/m
 
 ```html
 <template>
-  <d3-cartesian class="demo" :margin="margin" :width="900" :height="450" :x="x" :y="y">
+  <d3-cartesian class="demo" :margin="margin" :width="860" :height="450" :x="x" :y="y">
     <template slot-scope="props">
       <d3-line :data="data" x="x" y="y" :definedFn="d => d" v-bind="props"/>
       <d3-area :data="data" x="x" y="y" :definedFn="d => d" v-bind="props"/>

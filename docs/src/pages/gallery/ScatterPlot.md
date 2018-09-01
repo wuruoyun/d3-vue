@@ -4,7 +4,7 @@ Original D3 demo at [https://bl.ocks.org/mbostock/3887118](https://bl.ocks.org/m
 
 ```html
 <template>
-  <d3-cartesian class="demo" :width="900" :height="450" :x="x" :y="y">
+  <d3-cartesian class="demo" :width="860" :height="450" :x="x" :y="y">
     <template slot-scope="props">
       <d3-points :data="data" x="sepalWidth" y="sepalLength" :color="colorFn" :size="3.5" v-bind="props"/>
       <d3-legend :data="species" label="name" color="color" align="right" :x="800"/>

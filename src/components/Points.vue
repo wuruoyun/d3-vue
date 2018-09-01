@@ -15,7 +15,7 @@ export default {
     },
     color: {
       type: String | Function,
-      required: false
+      default: 'steelblue'
     },
     animated: {
       type: Boolean,
