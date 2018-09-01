@@ -20,6 +20,7 @@ export default {
         }, {
           title: 'Components',
           pages: [
+            { to: 'axis', title: 'Axis' },
             { to: 'cartesian', title: 'Cartesian' }
           ]
         }
