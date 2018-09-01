@@ -1,12 +1,17 @@
 # Axis
 
-Axis are usually added to one of the margin slots in `Cartesian`.
+Axis are usually added to one of the margin slots in `Cartesian`, which in turn provies several required props to the axis.
 
 ```html
-<d3-cartesian :x="x" :y="y">
-  <d3-axis slot="south" orientation="Bottom" slot-scope="props" v-bind="props"/>
-  <d3-axis slot="west" orientation="Left" slot-scope="props" v-bind="props"/>
-</d3-cartesian>
+<template>
+  <d3-cartesian width="900" height="100"
+    :x="{type: 'Time', domain: [new Date(2015, 0, 1), new Date(2018, 0, 1)]}"
+    :y="{type: 'Linear', domain: [0, 100]}">
+    <d3-axis slot="south" orientation="Bottom" slot-scope="props" v-bind="props"/>
+    <d3-axis slot="west" orientation="Left" :options="{ticks: {count: 3}}" slot-scope="props" v-bind="props"/>
+  </d3-cartesian>
+</template>
+<!-- axis-demo.vue -->
 ```
 
 ## Props
