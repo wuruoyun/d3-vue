@@ -15,7 +15,7 @@ Original D3 demo at [https://bl.ocks.org/mbostock/7f5f22524bd1d824dd53c535eda018
 
 <script>
 import * as d3 from 'd3'
-import '../../data/diamonds.tsv'
+import '../../../data/diamonds.tsv'
 
 export default {
   data () {

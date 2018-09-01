@@ -23,7 +23,7 @@ Original D3 demo at [https://bl.ocks.org/mbostock/34f08d5e11952a80609169b7917d41
 
 <script>
 import * as d3 from 'd3'
-import '../../data/sp500.csv'
+import '../../../data/sp500.csv'
 const parseDate = d3.timeParse("%b %Y")
 
 export default {

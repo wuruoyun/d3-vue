@@ -16,7 +16,7 @@ Original D3 demo at [https://beta.observablehq.com/@mbostock/d3-candlestick-char
 
 <script>
 import * as d3 from 'd3'
-import '../../data/appl-stock-candle.csv'
+import '../../../data/appl-stock-candle.csv'
 const parseDate = d3.timeParse("%Y-%m-%d")
 
 export default {

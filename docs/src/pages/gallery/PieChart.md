@@ -10,7 +10,7 @@ Original D3 demo at [https://bl.ocks.org/mbostock/3887235](https://bl.ocks.org/m
 
 <script>
 import * as d3 from 'd3'
-import '../../data/age-population.csv'
+import '../../../data/age-population.csv'
 
 const colorScale = d3.scaleOrdinal([
   "#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"

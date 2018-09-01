@@ -21,39 +21,10 @@
 
 <script>
 export default {
-  data () {
-    return {
-      sections: [
-        {
-          title: 'Getting started',
-          pages: [
-            { to: 'quick-start', title: 'Quick start' }
-          ]
-        },
-        {
-          title: 'Basic Demo',
-          pages: [
-            { to: '/area-chart', title: 'Area Chart' },
-            { to: '/bar-chart', title: 'Bar Chart' },
-            { to: '/line-chart', title: 'Line Chart' },
-            { to: '/pie-chart', title: 'Pie Chart' },
-            { to: '/scatter-plot', title: 'Scatter Plot' }
-          ]
-        },
-        {
-          title: 'Intermediate Demo',
-          pages: [
-            { to: '/brush-and-zoom', title: 'Brush & Zoom' },
-            { to: '/brush-and-zoom-ii', title: 'Brush & Zoom II' },
-            { to: '/candle-stick', title: 'Candlestick Chart' },
-            { to: '/choropleth', title: 'Choropleth' },
-            { to: '/density-contour', title: 'Density Contour' },
-            { to: '/grid-lines', title: 'Grid Lines' },
-            { to: '/missing-data', title: 'Missing Data' },
-            { to: '/treemap', title: 'Treemap' }
-          ]
-        }
-      ]
+  props: {
+    sections: {
+      type: Array,
+      required: true
     }
   }
 }

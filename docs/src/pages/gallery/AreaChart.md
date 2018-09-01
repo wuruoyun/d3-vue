@@ -13,7 +13,7 @@ Original D3 demo at [https://bl.ocks.org/mbostock/3883195](https://bl.ocks.org/m
 
 <script>
 import * as d3 from 'd3'
-import '../../data/appl-stock.tsv'
+import '../../../data/appl-stock.tsv'
 const parseTime = d3.timeParse("%d-%b-%y")
 
 export default {
