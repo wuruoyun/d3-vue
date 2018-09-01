@@ -20,8 +20,10 @@ export default {
         }, {
           title: 'Components',
           pages: [
+            { to: 'area', title: 'Area' },
             { to: 'axis', title: 'Axis' },
-            { to: 'cartesian', title: 'Cartesian' }
+            { to: 'cartesian', title: 'Cartesian' },
+            { to: 'line', title: 'Line' },
           ]
         }
       ]

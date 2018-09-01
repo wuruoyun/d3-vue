@@ -1,10 +1,10 @@
 # Cartesian
 
-Cartesian serves as the top-level component for charts that use Cartesian coordinate system. It contains children component such as lines, points, axis, etc. It creates the D3 scales for X and Y based on configuration prop, and injects the scales, along with other data, into the components in its slots via slot scope.
+`Cartesian` component serves as the top-level container for charts that use Cartesian coordinate system. It contains children component such as `Area`, `Line`, `Points`, `Axis`, etc. It creates the D3 scales for X and Y based on configuration prop, and injects the scales, along with other props, into its children components via slot scope.
 
 ```html
 <template>
-  <d3-cartesian :width="800" :height="250" :x="{ type: 'Linear', domain: [0, 100] }"
+  <d3-cartesian :width="800" :height="200" :x="{ type: 'Linear', domain: [0, 100] }"
     :y="{ type: 'Linear', domain: [0, 100] }">
     <template slot-scope="props">
       <d3-line :data="data" v-bind="props"/>
