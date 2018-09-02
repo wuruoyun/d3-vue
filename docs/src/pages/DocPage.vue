@@ -24,6 +24,7 @@ export default {
             { to: 'axis', title: 'Axis' },
             { to: 'cartesian', title: 'Cartesian' },
             { to: 'line', title: 'Line' },
+            { to: 'points', title: 'Points' }
           ]
         }
       ]
