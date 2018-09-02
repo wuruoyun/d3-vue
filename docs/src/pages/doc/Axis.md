@@ -2,18 +2,7 @@
 
 `Axis` component is the visual representation of scales. It is usually added to one of the margin slots in `Cartesian` component, which provies several required props, such as `scale`, `width` and `height` to the axis.
 
-```html
-<template>
-  <d3-cartesian width="800" height="200"
-    :x="{ type: 'Time', domain: [new Date(2015, 0, 1), new Date(2018, 0, 1)] }"
-    :y="{ type: 'Linear', domain: [0, 100] }">
-    <d3-axis slot="south" orientation="Bottom" title="X title" slot-scope="props" v-bind="props"/>
-    <d3-axis slot="west" orientation="Left" title="Y title" :options="{ ticks: { count: 4 } }"
-      slot-scope="props" v-bind="props"/>
-  </d3-cartesian>
-</template>
-<!-- axis-demo.vue -->
-```
+> Demo: [Area Chart](#/gallery/area-chart), [Bar Chart](#/gallery/bar-chart), [Line Chart](#/gallery/line-chart), [Scatter Plot](#/gallery/scatter-plot)
 
 ## Props
 

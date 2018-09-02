@@ -2,27 +2,7 @@
 
 `Cartesian` component serves as the top-level container for charts that use Cartesian coordinate system. It contains children component such as `Area`, `Line`, `Points`, `Axis`, etc. It creates the D3 scales for X and Y based on configuration prop, and injects the scales, along with other props, into its children components via slot scope.
 
-```html
-<template>
-  <d3-cartesian :width="800" :height="200" :x="{ type: 'Linear', domain: [0, 100] }"
-    :y="{ type: 'Linear', domain: [0, 100] }">
-    <template slot-scope="props">
-      <d3-line :data="data" v-bind="props"/>
-      <d3-points :data="data" v-bind="props"/>
-    </template>
-    <d3-axis slot="south" orientation="Bottom" slot-scope="props" v-bind="props"/>
-    <d3-axis slot="west" orientation="Left" slot-scope="props" v-bind="props"/>
-  </d3-cartesian>
-</template>
-<script>
-export default {
-  created () {
-    this.data = [ { x: 10, y: 20 }, { x: 30, y: 40 }, { x: 60, y: 50 }, { x: 90, y: 95 } ]
-  }
-}
-</script>
-<!-- cartesian-demo.vue -->
-```
+> Demo: [Area Chart](#/gallery/area-chart), [Bar Chart](#/gallery/bar-chart), [Line Chart](#/gallery/line-chart), [Scatter Plot](#/gallery/scatter-plot)
 
 ## Props
 

@@ -2,24 +2,7 @@
 
 `Line` component represents a single line in `Cartesian` component. It should be added to the `default` slot in `Cartesian` component, which provies several required props, such as `scaleX`, `scaleY`,`width` and `height`.
 
-```html
-<template>
-  <d3-cartesian width="800" height="200" :x="{ type: 'Linear', domain: [0, 100] }"
-    :y="{ type: 'Linear', domain: [0, 100] }">
-    <d3-line :data="data" slot-scope="props" v-bind="props"/>
-    <d3-axis slot="south" orientation="Bottom" slot-scope="props" v-bind="props"/>
-    <d3-axis slot="west" orientation="Left" slot-scope="props" v-bind="props"/>
-  </d3-cartesian>
-</template>
-<script>
-export default {
-  created () {
-    this.data = [ { x: 10, y: 20 }, { x: 30, y: 40 }, { x: 60, y: 50 }, { x: 90, y: 95 } ]
-  }
-}
-</script>
-<!-- line-demo.vue -->
-```
+> Demo: [Line Chart](#/gallery/line-chart), [Grid Lines](#/gallery/grid-lines), [Missing Data](#/gallery/missing-data)
 
 ## Props
 
