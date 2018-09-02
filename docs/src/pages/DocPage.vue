@@ -22,6 +22,7 @@ export default {
           pages: [
             { to: 'area', title: 'Area' },
             { to: 'axis', title: 'Axis' },
+            { to: 'bars', title: 'Bars' },
             { to: 'cartesian', title: 'Cartesian' },
             { to: 'line', title: 'Line' },
             { to: 'points', title: 'Points' }

@@ -12,7 +12,7 @@ Name             | Type       | Default      | Required | Description
 `scaleY`         | Function   |              | true     | D3 scale object, usually set by its parent `Cartesian` component
 `width`          | Number     |              | true     | The width of the charting area, usually set by its parent `Cartesian` component
 `height`         | Number     |              | true     | The height of the charting area, usually set by its parent `Cartesian` component
-`data`           | Array      | []           |          | The data for the line (points on the line)
+`data`           | Array      | []           |          | The data for the line (one element for each point on the line)
 `x`              | String or Function | 'x'          |          | A Function to retrieve the X value from `data`. A String 'abc' is equivalent to Function `d => d['abc']`.
 `y`              | String or Function | 'y'          |          | A Function to retrieve the Y upper value from `data`. A String 'abc' is equivalent to Function `d => d['abc']`.
 `color`          | String     | 'steelblue'  |          | Color of the line
