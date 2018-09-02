@@ -12,6 +12,7 @@ import Legend from './Legend.vue'
 import Line from './Line.vue'
 import Pie from './Pie.vue'
 import Points from './Points.vue'
+import StackedArea from './StackedArea.vue'
 import Text from './Text.vue'
 import Treemap from './Treemap.vue'
 
@@ -30,6 +31,7 @@ export {
   Line,
   Pie,
   Points,
+  StackedArea,
   Text,
   Treemap
 }

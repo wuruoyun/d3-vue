@@ -38,6 +38,7 @@ export default {
             { to: 'density-contour', title: 'Density Contour' },
             { to: 'grid-lines', title: 'Grid Lines' },
             { to: 'missing-data', title: 'Missing Data' },
+            { to: 'stacked-area', title: 'Stacked Area' },
             { to: 'treemap', title: 'Treemap' }
           ]
         }

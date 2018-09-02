@@ -11,6 +11,7 @@ import LineChart from '../pages/gallery/LineChart.md'
 import MissingData from '../pages/gallery/MissingData.md'
 import PieChart from '../pages/gallery/PieChart.md'
 import ScatterPlot from '../pages/gallery/ScatterPlot.md'
+import StackedArea from '../pages/gallery/StackedArea.md'
 import Treemap from '../pages/gallery/Treemap.md'
 
 export default [
@@ -27,6 +28,7 @@ export default [
   { path: 'missing-data', component: MissingData },
   { path: 'pie-chart', component: PieChart },
   { path: 'scatter-plot', component: ScatterPlot },
+  { path: 'stacked-area', component: StackedArea },
   { path: 'treemap', component: Treemap },
   { path: '', redirect: 'introduction' }
 ]
