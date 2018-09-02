@@ -10,9 +10,9 @@ Name             | Type       | Default      | Required | Description
 ---------------- | ---------- | ------------ | -------- | -----------------------
 `scaleX`         | Function   |              | true     | D3 scale object, usually set by its parent `Cartesian` component
 `scaleY`         | Function   |              | true     | D3 scale object, usually set by its parent `Cartesian` component
-`width`          | Number     |              | true     | The width of the axis painting area, usually set by its parent `Cartesian` component
-`height`         | Number     |              | true     | The height of the axis painting area, usually set by its parent `Cartesian` component
-`data`           | Array      | []           |          | The data for the area
+`width`          | Number     |              | true     | The width of the charting area, usually set by its parent `Cartesian` component
+`height`         | Number     |              | true     | The height of the charting area, usually set by its parent `Cartesian` component
+`data`           | Array      | []           |          | The data for the points
 `x`              | String or Function | 'x'          |          | A Function to retrieve the X value from `data`. A String 'abc' is equivalent to Function `d => d['abc']`.
 `y`              | String or Function | 'y'          |          | A Function to retrieve the Y value from `data`. A String 'abc' is equivalent to Function `d => d['abc']`.
 `color`          | String or Function | 'steelblue'  |          | A Function to retrieve the color of individual point. A String 'abc' is equivalent to Function `d => 'abc'`.
