@@ -13,12 +13,6 @@ export default {
       type: String,
       default: 'steelblue'
     },
-    y0: {
-      type: String | Function,
-      default: () => {
-        return d => 0
-      }
-    },
     curveFn: {
       type: Function,
       required: false
@@ -29,17 +23,10 @@ export default {
     }
   },
   computed: {
-    y0Fn () {
-      const { y0 } = this
-      return typeof y0 === 'function' ? y0 : d => d[y0]
-    },
-    scaledY0Fn () {
-      return d => this.scaleY(this.y0Fn(d))
-    },
     path () {
       const area = d3.area()
         .x(this.scaledXFn)
-        .y0(this.scaledY0Fn)
+        .y0(d => this.scaleY(0))
         .y1(this.scaledYFn)
 
       if (this.curveFn) area.curve(this.curveFn)
