@@ -28,16 +28,15 @@ export default {
     update () {
       if (!this.data) return
 
-      const { data, stack, keys, area, colorFn } = this
+      const { stackedData, area, colorFnByKey } = this
       const layer = d3.select(this.$el).selectAll('.layer')
-        .data(stack(data))
+        .data(stackedData)
         .enter().append('g')
           .attr('class', 'layer')
 
-      colorFn.domain(keys)
       layer.append('path')
           .attr('class', 'area')
-          .style('fill', d => colorFn(d.key))
+          .style('fill', d => colorFnByKey(d.key))
           .attr('d', area)
     }
   }

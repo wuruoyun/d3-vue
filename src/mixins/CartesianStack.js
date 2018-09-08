@@ -28,6 +28,14 @@ export default {
     },
     stack () {
       return d3.stack().keys(this.keys)
+    },
+    stackedData () {
+      const { data, stack } = this
+      if (data) return stack(data)
+    },
+    colorFnByKey () {
+      const { colorFn, keys } = this
+      if (colorFn) return colorFn.domain(keys)
     }
   },
   watch: {

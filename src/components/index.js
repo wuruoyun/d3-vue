@@ -13,6 +13,7 @@ import Line from './Line.vue'
 import Pie from './Pie.vue'
 import Points from './Points.vue'
 import StackedArea from './StackedArea.vue'
+import StackedBars from './StackedBars.vue'
 import Text from './Text.vue'
 import Treemap from './Treemap.vue'
 
@@ -32,6 +33,7 @@ export {
   Pie,
   Points,
   StackedArea,
+  StackedBars,
   Text,
   Treemap
 }

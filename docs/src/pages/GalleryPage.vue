@@ -39,6 +39,7 @@ export default {
             { to: 'grid-lines', title: 'Grid Lines' },
             { to: 'missing-data', title: 'Missing Data' },
             { to: 'stacked-area', title: 'Stacked Area' },
+            { to: 'stacked-bars', title: 'Stacked Bar Chart' },
             { to: 'treemap', title: 'Treemap' }
           ]
         }

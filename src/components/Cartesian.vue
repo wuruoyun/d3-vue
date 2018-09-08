@@ -117,8 +117,9 @@ export default {
       if (options) {
         switch (type) {
           case 'Band':
-            const { padding } = options
+            const { padding, paddingInner } = options
             if (padding) scale.padding(padding)
+            if (paddingInner) scale.paddingInner(paddingInner)
             break
         }
       }

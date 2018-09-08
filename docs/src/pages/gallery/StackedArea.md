@@ -44,5 +44,5 @@ export default {
   }
 }
 </script>
-<!-- area-chart-demo.vue -->
+<!-- stacked-area-chart-demo.vue -->
 ````
