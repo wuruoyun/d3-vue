@@ -21,7 +21,7 @@ export default {
   data () {
     return {
       data: null,
-      x: { type: 'Band', domain: [], options: { padding: 0.1 } },
+      x: { type: 'Band', domain: [], configFn: scale => scale.padding(0.1) },
       optionsX: { tickPadding: 0.1 },
       y: { type: 'Linear', domain: [] },
       optionsY: { ticks: { count: 10, specifier: '%'} }

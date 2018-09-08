@@ -20,7 +20,7 @@ export default {
   data () {
     return {
       margin: { top: 20, right: 10, bottom: 30, left: 30 },
-      x: { type: 'Band', domain: [], options: { paddingInner: 0.05 } },
+      x: { type: 'Band', domain: [], configFn: scale => scale.paddingInner(0.05) },
       y: { type: 'Linear', domain: [0, 1] },
       data: [],
       keys: [],

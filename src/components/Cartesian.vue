@@ -112,17 +112,9 @@ export default {
   },
   methods: {
     buildScale (axis) {
-      const { type, options } = axis
+      const { type, configFn } = axis
       const scale = d3[`scale${type}`]()
-      if (options) {
-        switch (type) {
-          case 'Band':
-            const { padding, paddingInner } = options
-            if (padding) scale.padding(padding)
-            if (paddingInner) scale.paddingInner(paddingInner)
-            break
-        }
-      }
+      if (configFn) configFn(scale)
       return scale
     },
     zoomToX (domain) {
