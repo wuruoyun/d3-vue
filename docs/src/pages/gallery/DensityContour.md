@@ -6,9 +6,9 @@ Original D3 demo at [https://bl.ocks.org/mbostock/7f5f22524bd1d824dd53c535eda018
 <template>
   <d3-cartesian class="demo" :width="860" :height="550" :x="x" :y="y">
     <d3-contour :data="data" x="carat" y="price" :colorFn="colorFn" slot-scope="props" v-bind="props"/>
-    <d3-axis slot="south" orientation="Bottom" title="Carats" :options="optionsX"
+    <d3-axis slot="south" orientation="Bottom" title="Carats" titleLastTick :config="configX"
       slot-scope="props" v-bind="props"/>
-    <d3-axis slot="west" orientation="Left" title="Price (USD)" :options="optionsY"
+    <d3-axis slot="west" orientation="Left" title="Price (USD)" titleLastTick :config="configY"
       slot-scope="props" v-bind="props"/>
   </d3-cartesian>
 </template>
@@ -22,15 +22,9 @@ export default {
     return {
       data: null,
       x: { type: 'Log', domain: [2e-1, 5e0] },
-      optionsX: {
-        ticks: { count: null, specifier: ".1f"},
-        titleLastTick: true
-      },
       y: { type: 'Log', domain: [3e2, 2e4] },
-      optionsY: {
-        ticks: { count: null, specifier: ".1s"},
-        titleLastTick: true
-      },
+      configX: axis => axis.ticks(null, '.1f'),
+      configY: axis => axis.ticks(null, '.1s'),
       colorFn: null
     }
   },

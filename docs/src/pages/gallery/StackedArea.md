@@ -8,7 +8,7 @@ Original D3 demo at [https://bl.ocks.org/mbostock/3885211](https://bl.ocks.org/m
     <d3-stacked-area :data="data" x="date" :keys="keys" :colorFn="colorFn"
       slot-scope="props" v-bind="props"/>
     <d3-axis slot="south" orientation="Bottom" slot-scope="props" v-bind="props"/>
-    <d3-axis slot="west" orientation="Left" :options="options" slot-scope="props" v-bind="props"/>
+    <d3-axis slot="west" orientation="Left" :config="configX" slot-scope="props" v-bind="props"/>
   </d3-cartesian>
 </template>
 
@@ -26,7 +26,7 @@ export default {
       data: [],
       keys: [],
       colorFn: d3.scaleOrdinal(d3.schemeCategory10),
-      options: { ticks: { count: 10, specifier: '%' } }
+      configX: axis => axis.ticks(10, '%')
     }
   },
   created () {

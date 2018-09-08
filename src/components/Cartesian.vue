@@ -112,9 +112,9 @@ export default {
   },
   methods: {
     buildScale (axis) {
-      const { type, configFn } = axis
+      const { type, config } = axis
       const scale = d3[`scale${type}`]()
-      if (configFn) configFn(scale)
+      if (config) config(scale)
       return scale
     },
     zoomToX (domain) {

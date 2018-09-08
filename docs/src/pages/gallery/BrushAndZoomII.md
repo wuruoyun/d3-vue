@@ -10,9 +10,9 @@ Original D3 demo at [https://bl.ocks.org/mbostock/f48fcdb929a620ed97877e4678ab15
         animated v-bind="props"/>
       <d3-brush ref="brush" orientation="xy" @end="brushEnd" v-bind="props"/>/>
     </template>
-    <d3-axis slot="south" orientation="Top" transform="translate(0,-10)" :options="optionsX"
+    <d3-axis slot="south" orientation="Top" transform="translate(0,-10)" :config="configX"
       slot-scope="props" v-bind="props"/>
-    <d3-axis slot="west" orientation="Right" transform="translate(10,0)" :options="optionsY"
+    <d3-axis slot="west" orientation="Right" transform="translate(10,0)" :config="configY"
       slot-scope="props" v-bind="props"/>
   </d3-cartesian>
 </template>
@@ -25,10 +25,10 @@ export default {
     return {
       width: 860, height: 500,
       margin: { top: 0, right: 0, bottom: 0, left: 0},
-      x: { type: 'Linear', domain: [] },
+      x: { type: 'Linear', domain: [-4.5, 4.5] },
       y: { type: 'Linear', domain: [] },
-      optionsX: { ticks: { count: 12 } },
-      optionsY: null,
+      configX: axis => axis.ticks(12),
+      configY: null,
       colorFn: null,
       data: []
     }
@@ -52,9 +52,8 @@ export default {
     this.data = d3.merge([points0, points1, points2])
 
     const k = this.height / this.width
-    this.x.domain = [-4.5, 4.5]
     this.y.domain = [-4.5 * k, 4.5 * k]
-    this.optionsY = { ticks: { count: 12 * k } }
+    this.configY = axis => axis.ticks(12 * k)
 
     const colorScale = d3.scaleOrdinal(d3.schemeCategory10)
     this.colorFn = d => colorScale(d[2])

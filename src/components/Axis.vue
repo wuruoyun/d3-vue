@@ -29,23 +29,20 @@ export default {
       type: Number,
       required: true
     },
-    options: {
-      type: Object,
-      default: () => {}
+    config: {
+      type: Function,
+      required: false
+    },
+    titleLastTick: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
     axis () {
-      const { orientation, scale, options } = this
+      const { orientation, scale, options, config } = this
       const axis = d3[`axis${orientation}`](scale)
-      if (options) {
-        const { ticks, tickSize, tickPadding, tickValues, tickFormat } = options
-        if (tickValues) axis.tickValues(tickValues)
-        if (tickFormat) axis.tickFormat(tickFormat)
-        if (ticks) axis.ticks(ticks.count, ticks.specifier)
-        if (tickSize) axis.tickSize(tickSize)
-        if (tickPadding) axis.tickPadding(tickPadding)
-      }
+      if (config) config(axis)
       return axis
     }
   },
@@ -65,7 +62,7 @@ export default {
       if (title) {
         switch (orientation) {
           case 'Left':
-            if (options && options.titleLastTick) {
+            if (this.titleLastTick) {
               g.select('.tick:last-of-type text')
                 .select(function () { return this.parentNode.appendChild(this.cloneNode()) })
                 .attr('class', 'label')
@@ -84,7 +81,7 @@ export default {
             }
             break
           case 'Bottom':
-            if (options && options.titleLastTick) {
+            if (this.titleLastTick) {
               g.select('.tick:last-of-type text')
                 .select(function () { return this.parentNode.appendChild(this.cloneNode()) })
                 .attr('class', 'label')

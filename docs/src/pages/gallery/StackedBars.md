@@ -10,7 +10,7 @@ Original D3 demo at [https://bl.ocks.org/mbostock/3886208](https://bl.ocks.org/m
       <d3-legend class="legend" :data="legendItems" label="name" color="color" align="right" :x="800"/>
     </template>
     <d3-axis slot="south" orientation="Bottom" slot-scope="props" v-bind="props"/>
-    <d3-axis slot="west" orientation="Left" :options="optionsY" slot-scope="props" v-bind="props"/>
+    <d3-axis slot="west" orientation="Left" :config="configY" slot-scope="props" v-bind="props"/>
   </d3-cartesian>
 </template>
 
@@ -22,11 +22,11 @@ export default {
   data () {
     return {
       margin: { top: 20, right: 10, bottom: 30, left: 30 },
-      x: { type: 'Band', domain: [], configFn: scale => scale.paddingInner(0.05) },
+      x: { type: 'Band', domain: [], config: scale => scale.paddingInner(0.05) },
       y: { type: 'Linear', domain: [0, 1] },
       data: [],
       keys: [],
-      optionsY: { ticks: { count: null, specifier: 's' } }
+      configY: axis => axis.ticks(null, 's')
     }
   },
   computed: {
