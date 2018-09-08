@@ -23,7 +23,7 @@ export default {
   data () {
     return {
       margin: { top: 20, right: 20, bottom: 30, left: 40 },
-      x: { type: 'Band', domain: [], options: { padding: 0.2 } },
+      x: { type: 'Band', domain: [], configFn: scale => scale.padding(0.2) },
       y: { type: 'Linear', domain: [] },
       optionsX: { tickFormat: d3.timeFormat("%-m/%-d") },
       optionsY: { tickFormat: d3.format("$~f") },
