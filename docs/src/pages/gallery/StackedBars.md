@@ -4,9 +4,11 @@ Original D3 demo at [https://bl.ocks.org/mbostock/3886208](https://bl.ocks.org/m
 
 ```html
 <template>
-  <d3-cartesian :margin="margin" :width="860" :height="450" :x="x" :y="y">
-    <d3-stacked-bars :data="data" x="State" :keys="keys" :colorFn="colorFn"
-      slot-scope="props" v-bind="props"/>
+  <d3-cartesian class="demo" :margin="margin" :width="860" :height="450" :x="x" :y="y">
+    <template slot-scope="props">
+      <d3-stacked-bars :data="data" x="State" :keys="keys" :colorFn="colorFn" v-bind="props"/>
+      <d3-legend class="legend" :data="legendItems" label="name" color="color" align="right" :x="800"/>
+    </template>
     <d3-axis slot="south" orientation="Bottom" slot-scope="props" v-bind="props"/>
     <d3-axis slot="west" orientation="Left" :options="optionsY" slot-scope="props" v-bind="props"/>
   </d3-cartesian>
@@ -24,9 +26,18 @@ export default {
       y: { type: 'Linear', domain: [0, 1] },
       data: [],
       keys: [],
-      colorFn: d3.scaleOrdinal()
-        .range(['#98abc5', '#8a89a6', '#7b6888', '#6b486b', '#a05d56', '#d0743c', '#ff8c00']),
       optionsY: { ticks: { count: null, specifier: 's' } }
+    }
+  },
+  computed: {
+    colorFn () {
+      return d3.scaleOrdinal().domain(this.keys)
+        .range(['#98abc5', '#8a89a6', '#7b6888', '#6b486b', '#a05d56', '#d0743c', '#ff8c00'])
+    },
+    legendItems () {
+      return this.keys.map(k => {
+        return { name: k, color: this.colorFn(k) }
+      }).reverse()
     }
   },
   created () {
@@ -48,5 +59,17 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.demo /deep/ {
+  .legend {
+    font-size: 11px;
+    font-family: sans-serif;
+  }
+  .axis path {
+    display: none;
+  }
+}
+</style>
 <!-- stacked-bar-chart-demo.vue -->
 ````
