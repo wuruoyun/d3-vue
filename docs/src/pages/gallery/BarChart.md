@@ -20,12 +20,8 @@ export default {
     return {
       data: null,
       x: { type: 'Band', domain: [], config: scale => scale.padding(0.1) },
-      y: { type: 'Linear', domain: [] }
-    }
-  },
-  methods: {
-    configY (axis) {
-      axis.ticks(10, '%')
+      y: { type: 'Linear', domain: [] },
+      configY: axis => axis.ticks(10, '%')
     }
   },
   created () {

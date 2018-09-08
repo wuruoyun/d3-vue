@@ -11,6 +11,7 @@ Name             | Type       | Default      | Required | Description
 `x`              | Object     |              | true     | Configration for X scale, such as `{ type: 'Linear', domain: [0, 100]}`
 `y`              | Object     |              | true     | Configration for Y scale, such as `{ type: 'Linear', domain: [0, 100]}`
 `margin`         | Object     | `{ top: 20, right: 20, bottom: 30, left: 30 }` |          | Margin around the chart content area
+`config`         | Function   |              |          | Function to configure scale
 `zoom`           | String     |              |          | Eable zoom at given orientation. Supported values: 'x', 'y', or 'xy'
 
 ## Slots

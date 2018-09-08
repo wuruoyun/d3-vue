@@ -13,7 +13,8 @@ Name             | Type       | Default      | Required | Description
 `height`         | Number     |              | true     | The height of the axis painting area, usually set by its parent `Cartesian` component
 `orientation`    | String     | 'Bottom'     |          | Orientation of the ticks. Supported values: 'Bottom', 'Left', 'Right', 'Top'
 `title`          | String     |              |          | Title of the axis, only valid if `orientation` is 'Bottom' or 'Left'
-`options`        | Object     |              |          | Extra options for the axis
+`titleLastTick`  | Boolean    | `false`      |          | Position the title at the last tick
+`config`         | Function   |              |          | Function to configure axis
 
 ## Slots
 
