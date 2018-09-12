@@ -37,6 +37,7 @@ export default {
             { to: 'choropleth', title: 'Choropleth' },
             { to: 'density-contour', title: 'Density Contour' },
             { to: 'grid-lines', title: 'Grid Lines' },
+            { to: 'grouped-bars', title: 'Grouped Bars' },
             { to: 'missing-data', title: 'Missing Data' },
             { to: 'stacked-area', title: 'Stacked Area' },
             { to: 'stacked-bars', title: 'Stacked Bar Chart' },

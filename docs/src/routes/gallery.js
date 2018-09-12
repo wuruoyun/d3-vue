@@ -7,6 +7,7 @@ import Choropleth from '../pages/gallery/Choropleth.md'
 import CandleStick from '../pages/gallery/CandleStick.md'
 import DensityContour from '../pages/gallery/DensityContour.md'
 import GridLines from '../pages/gallery/GridLines.md'
+import GroupedBars from '../pages/gallery/GroupedBars.md'
 import LineChart from '../pages/gallery/LineChart.md'
 import MissingData from '../pages/gallery/MissingData.md'
 import PieChart from '../pages/gallery/PieChart.md'
@@ -25,6 +26,7 @@ export default [
   { path: 'choropleth', component: Choropleth },
   { path: 'density-contour', component: DensityContour },
   { path: 'grid-lines', component: GridLines },
+  { path: 'grouped-bars', component: GroupedBars },
   { path: 'line-chart', component: LineChart },
   { path: 'missing-data', component: MissingData },
   { path: 'pie-chart', component: PieChart },

@@ -8,6 +8,7 @@ import ColorBar from './ColorBar.vue'
 import Contour from './Contour.vue'
 import Country from './Country.vue'
 import GridLines from './GridLines.vue'
+import GroupedBars from './GroupedBars.vue'
 import Legend from './Legend.vue'
 import Line from './Line.vue'
 import Pie from './Pie.vue'
@@ -28,6 +29,7 @@ export {
   Contour,
   Country,
   GridLines,
+  GroupedBars,
   Legend,
   Line,
   Pie,
