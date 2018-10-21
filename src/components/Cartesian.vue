@@ -97,11 +97,11 @@ export default {
     },
     defaultScaleX () {
       const scale = this.buildScale(this.x)
-      return scale.domain(this.domainX).rangeRound([0, this.contentWidth])
+      return scale.domain(this.domainX).range([0, this.contentWidth])
     },
     defaultScaleY () {
       const scale = this.buildScale(this.y)
-      return scale.domain(this.domainY).rangeRound([this.contentHeight, 0])
+      return scale.domain(this.domainY).range([this.contentHeight, 0])
     },
     scaleX () {
       return this.prefScaleX ? this.prefScaleX : this.defaultScaleX

@@ -27,14 +27,13 @@ export default {
       switch (orientation) {
         case 'x':
           return d3.brushX().extent([[0, 0], [width, height]])
-            .on('brush', this.brushedX).on('end', this.brushedX(true))
+            .on('brush', this.brushedX).on('end', () => this.brushedX(true))
         case 'y':
           return d3.brushY().extent([[0, 0], [width, height]])
-            .on('brush', this.brushedY).on('end', this.brushedY(true))
+            .on('brush', this.brushedY).on('end', () => this.brushedY(true))
         default:
           return d3.brush().extent([[0, 0], [width, height]])
-            .on('brush', this.brushed)
-            .on('end', () => this.brushed(true))
+            .on('brush', this.brushed).on('end', () => this.brushed(true))
       }
     }
   },
@@ -66,15 +65,27 @@ export default {
       if (this.silent || !d3.event) return
       const { scaleX } = this
       const selection = d3.event.selection || scaleX.range()
-      const x = selection.map(scaleX.invert, scaleX)
-      this.$emit(end ? 'end' : 'brush', x)
+      if (scaleX.invert instanceof Function) { // numeric continuous scale
+        const x = selection.map(scaleX.invert, scaleX)
+        this.$emit(end ? 'end' : 'brush', x)
+      } else { // category scale
+        const selected =  scaleX.domain()
+          .filter(d => selection[0] <= scaleX(d) && scaleX(d) <= selection[1])
+        this.$emit(end ? 'end' : 'brush', selected)
+      }
     },
     brushedY (end) {
       if (this.silent || !d3.event) return
       const { scaleY } = this
       const selection = d3.event.selection || scaleY.range()
-      const y = selection.map(scaleY.invert, scaleY)
-      this.$emit(end ? 'end' : 'brush', [y[1], y[0]])
+      if (scaleY.invert instanceof Function) {
+        const y = selection.map(scaleY.invert, scaleY)
+        this.$emit(end ? 'end' : 'brush', [y[1], y[0]])
+      } else {
+        const selected =  scaleY.domain()
+          .filter(d => selection[0] <= scaleY(d) && scaleY(d) <= selection[1])
+        this.$emit(end ? 'end' : 'brush', selected)        
+      }
     },
     brushed (end) {
       if (this.silent || !d3.event) return

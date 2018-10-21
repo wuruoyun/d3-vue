@@ -3,6 +3,7 @@ import AreaChart from '../pages/gallery/AreaChart.md'
 import BarChart from '../pages/gallery/BarChart.md'
 import BrushAndZoom from '../pages/gallery/BrushAndZoom.md'
 import BrushAndZoomII from '../pages/gallery/BrushAndZoomII.md'
+import BrushingBarChart from '../pages/gallery/BrushingBarChart.md'
 import Choropleth from '../pages/gallery/Choropleth.md'
 import CandleStick from '../pages/gallery/CandleStick.md'
 import DensityContour from '../pages/gallery/DensityContour.md'
@@ -22,6 +23,7 @@ export default [
   { path: 'bar-chart', component: BarChart },
   { path: 'brush-and-zoom', component: BrushAndZoom },
   { path: 'brush-and-zoom-ii', component: BrushAndZoomII },
+  { path: 'brushing-bar-chart', component: BrushingBarChart },
   { path: 'candle-stick', component: CandleStick },
   { path: 'choropleth', component: Choropleth },
   { path: 'density-contour', component: DensityContour },
