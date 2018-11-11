@@ -1,6 +1,6 @@
 # Quick Start
 
-This library may be used directly if you find the components needs your needs.
+This library may be used directly if you find the components needs your needs. As the documentation is still a work in progress, you may directly refer to the demo codes in [gallery](#/gallery) for reference.
 
 Alternatively, you may use the components as example to build your own.
 

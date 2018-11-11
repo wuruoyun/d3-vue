@@ -4,7 +4,7 @@
 
 The orientation of bars is determined by the two scales. If `scaleX` has numeric domain while `scaleY` has text domain, the bars will be horizontal. Otherwise, it will be vertical.
 
-> Demo: [Bar chart](#/gallery/bar-chart)
+> Demo: [Bar Chart](#/gallery/bar-chart), [Brushing Bar Chart](#/gallery/brushing-bar-chart)
 
 ## Props
 

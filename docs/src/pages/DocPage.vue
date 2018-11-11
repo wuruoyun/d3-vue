@@ -24,8 +24,10 @@ export default {
             { to: 'axis', title: 'Axis' },
             { to: 'bars', title: 'Bars' },
             { to: 'cartesian', title: 'Cartesian' },
+            { to: 'grid-lines', title: 'GridLines' },
             { to: 'line', title: 'Line' },
-            { to: 'points', title: 'Points' }
+            { to: 'points', title: 'Points' },
+            { to: 'text', title: 'Text' }
           ]
         }
       ]

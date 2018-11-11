@@ -1,6 +1,8 @@
 # Cartesian
 
-`Cartesian` component serves as the top-level container for charts that use Cartesian coordinate system. It contains children component such as `Area`, `Line`, `Points`, `Axis`, etc. It creates the D3 scales for X and Y based on configuration prop, and injects the scales, along with other props, into its children components via slot scope.
+`Cartesian` component serves as the top-level component for all charts that use Cartesian coordinate system. It may contain children component such as `Area`, `Line`, `Points`, `Axis`, etc. It creates the D3 scales for X and Y axis and injects them, along with other props, into its children components via slot scope.
+
+Zooming in X, Y or both direction is supported if both X and Y are using continuous scales. It is done by setting a smaller domain range to the corresponding scales.
 
 > Demo: [Area Chart](#/gallery/area-chart), [Bar Chart](#/gallery/bar-chart), [Line Chart](#/gallery/line-chart), [Scatter Plot](#/gallery/scatter-plot)
 
@@ -10,15 +12,14 @@ Name             | Type       | Default      | Required | Description
 ---------------- | ---------- | ------------ | -------- | -----------------------
 `x`              | Object     |              | true     | Configration for X scale, such as `{ type: 'Linear', domain: [0, 100]}`
 `y`              | Object     |              | true     | Configration for Y scale, such as `{ type: 'Linear', domain: [0, 100]}`
-`margin`         | Object     | `{ top: 20, right: 20, bottom: 30, left: 30 }` |          | Margin around the chart content area
-`config`         | Function   |              |          | Function to configure scale
+`margin`         | Object     | `{ top: 20, right: 20, bottom: 30, left: 30 }` |          | Margin around the chart content area. Each side of the margin has a slot to put components, such as Axis.
 `zoom`           | String     |              |          | Eable zoom at given orientation. Supported values: 'x', 'y', or 'xy'
 
 ## Slots
 
 Slot             | Slot Props       | Description
 ---------------- | ---------------- | -----------------------
-`default`        | `scaleX`, `scaleY`, `width`, `height` | The content area of the chart.
+`default`        | `scaleX`, `scaleY`, `width`, `height` | The content area of the chart. The `width` and `height` are of this content area rather than the root SVG.
 `north`          | `scale`, `width`, `height` | The north region in the chart margin. The `scale` is for X axis.
 `east`           | `scale`, `width`, `height` | The east region in the chart margin. The `scale` is for Y axis.
 `south`          | `scale`, `width`, `height` | The south region in the chart margin. The `scale` is for X axis.
@@ -28,7 +29,7 @@ Slot             | Slot Props       | Description
 
 Event            | Payload         | Description
 ---------------- | --------------- | -----------------------
-`zoom`           | `{ x: [x1, x2], y: [y1, y2]}` | When zoom occurs in the chart. The `x` and `y` are the new domain ranges after zooming took place.
+`zoom`           | `{ x: [x1, x2], y: [y1, y2]}` if zoom mode is 'xy', `[x1, x2]` if zoom mode is 'x', `[y1, y2]` if zoom mode is 'y' | When zoom occurs in the chart. The `x1`, `y1`, etc. are the new domain ranges after zooming took place.
 
 ## Methods
 
