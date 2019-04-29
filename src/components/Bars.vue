@@ -1,13 +1,17 @@
 <template>
   <g class="bars">
-    <rect v-if="orientation === 'vertical'"
-      v-for="(d, i) in data" :key="keyFn ? keyFn(d) : i"
-      class="bar" :x="scaleX(xFn(d))" :y="scaleY(yFn(d))"
-      :width="scaleX.bandwidth()" :height="height - scaleY(yFn(d))"/>
-    <rect v-else
-      v-for="(d, i) in data" :key="keyFn ? keyFn(d) : i"
-      class="bar" :x="scaleX(xFn(d))" :y="scaleY(yFn(d))"
-      :width="scaleX(xFn(d))" :height="scaleY.bandwidth()"/>
+    <template v-if="orientation === 'vertical'">
+      <rect v-for="(d, i) in data" :key="keyFn ? keyFn(d) : i"
+        class="bar" :x="scaleX(xFn(d))" :y="scaleY(yFn(d))"
+        :width="scaleX.bandwidth()" :height="height - scaleY(yFn(d))">
+      </rect>
+    </template>
+    <template v-else>
+      <rect v-for="(d, i) in data" :key="keyFn ? keyFn(d) : i"
+        class="bar" :x="scaleX(xFn(d))" :y="scaleY(yFn(d))"
+        :width="scaleX(xFn(d))" :height="scaleY.bandwidth()">
+      </rect>
+    </template>
   </g>
 </template>
 
