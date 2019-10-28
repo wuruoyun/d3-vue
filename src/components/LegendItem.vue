@@ -30,6 +30,7 @@ export default {
   computed: {
     iconTransform () {
       if (this.align === 'right') return `translate(${-this.size},0)`
+      else return null
     },
     textTransform () {
       const dx = this.size + 6
@@ -38,6 +39,7 @@ export default {
     },
     textStyle () {
       if (this.align === 'right') return 'text-anchor:end;'
+      else return null
     }
   }
 }

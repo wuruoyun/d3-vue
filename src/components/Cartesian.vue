@@ -48,11 +48,9 @@
 <script>
 import * as d3 from 'd3'
 import Region from '../mixins/Region'
-import Axis from './Axis.vue'
 
 export default {
   mixins: [ Region ],
-  components: { Axis },
   props: {
     x: {
       type: Object,
@@ -120,7 +118,7 @@ export default {
     zoomToX (domain) {
       const { zoom, defaultScaleX, contentWidth } = this
       if (zoom && zoom !== 'x') {
-        console.error('Interactive zoom is not x.')
+        // console.error('Interactive zoom is not x.')
       } else {
         this.prefScaleX = defaultScaleX.copy().domain(domain)
         if (zoom) {
@@ -136,7 +134,7 @@ export default {
     zoomToY (domain) {
       const { zoom, defaultScaleY, contentHeight } = this
       if (zoom && zoom !== 'y') {
-        console.error('Interactive zoom is not y.')
+        // console.error('Interactive zoom is not y.')
       } else {
         this.prefScaleY = defaultScaleY.copy().domain(domain)
         if (zoom) {
@@ -152,7 +150,7 @@ export default {
     zoomTo (domain) {
       const { zoom, defaultScaleX, defaultScaleY, contentWidth, contentHeight } = this
       if (zoom) {
-        console.error('Interactive zoom is not disabled.')
+        // console.error('Interactive zoom is not disabled.')
       } else {
         this.prefScaleX = defaultScaleX.copy().domain(domain.x)
         this.prefScaleY = defaultScaleY.copy().domain(domain.y)

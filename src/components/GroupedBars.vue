@@ -14,7 +14,7 @@ export default {
       default: () => []
     },
     x: {
-      type: String | Function,
+      type: [String, Function],
       default: 'x'
     },
     keys: {
@@ -39,14 +39,16 @@ export default {
     stackedData () {
       const { data, stack } = this
       if (data) return stack(data)
+      else return null
     },
     colorFnByKey () {
       const { colorFn, keys } = this
       if (colorFn) return colorFn.domain(keys)
+      else return null
     }
   },
   watch: {
-    data (val) {
+    data () {
       this.update()
     }
   },

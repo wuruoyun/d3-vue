@@ -121,7 +121,7 @@ export default {
     }
   },
   watch: {
-    brushFn (val) {
+    brushFn () {
       this.update()
     }
   },

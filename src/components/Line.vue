@@ -32,6 +32,8 @@ export default {
         if (this.curveFn) path.curve(this.curveFn)
         if (this.definedFn) path.defined(this.definedFn)
         return path(this.data)
+      } else {
+        return null
       }
     }
   }

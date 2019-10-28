@@ -14,7 +14,7 @@ export default {
       default: 5
     },
     color: {
-      type: String | Function,
+      type: [String, Function],
       default: 'steelblue'
     },
     animated: {
@@ -25,7 +25,7 @@ export default {
   computed: {
     colorFn () {
       const { color } = this
-      return typeof color === 'function' ? color : d => color
+      return typeof color === 'function' ? color : () => color
     }
   },
   watch: {

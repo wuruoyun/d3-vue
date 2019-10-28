@@ -35,9 +35,8 @@ export default {
   computed: {
     transform () {
       const { x, y } = this
-      if (x !== 0 || y !== 0) {
-        return `translate(${x},${y})`
-      }
+      if (x !== 0 || y !== 0) return `translate(${x},${y})`
+      else return null
     }
   },
   methods: {

@@ -26,7 +26,7 @@ export default {
     path () {
       const area = d3.area()
         .x(this.scaledXFn)
-        .y0(d => this.scaleY(0))
+        .y0(() => this.scaleY(0))
         .y1(this.scaledYFn)
 
       if (this.curveFn) area.curve(this.curveFn)

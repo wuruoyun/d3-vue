@@ -39,7 +39,7 @@ export default {
     }
   },
   watch: {
-    data (val) {
+    data () {
       this.update()
     }
   },

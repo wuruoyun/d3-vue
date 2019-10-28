@@ -13,7 +13,7 @@ export default {
       if (!this.data) return
 
       const { stackedData, colorFnByKey, scaleX, scaleY } = this
-      const layer = d3.select(this.$el).selectAll('g')
+      d3.select(this.$el).selectAll('g')
         .data(stackedData)
         .enter().append('g')
           .attr('fill', d => colorFnByKey(d.key))

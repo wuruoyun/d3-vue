@@ -25,11 +25,11 @@ export default {
       default: 18
     },
     label: {
-      type: String | Function,
+      type: [String, Function],
       required: true
     },
     color: {
-      type: String | Function,
+      type: [String, Function],
       required: false
     },
     x: {

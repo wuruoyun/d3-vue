@@ -47,10 +47,10 @@ export default {
     }
   },
   watch: {
-    axis (val) {
+    axis () {
       this.update()
     },
-    options (val) {
+    options () {
       this.update()
     }
   },

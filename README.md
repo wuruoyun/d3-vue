@@ -6,10 +6,6 @@ This library is an attempt to bring the simplicity of Vue and power of D3 togeth
 
 ## Quick Start
 
-```bash
-npm install d3 @wuruoyun/d3-vue --save
-```
-
 ```javascript
 // main.js
 import Vue from 'vue'

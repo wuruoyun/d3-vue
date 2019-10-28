@@ -9,7 +9,7 @@
 
 <script>
 import * as d3 from 'd3'
-import * as topojson from 'topojson'
+import * as topojson from 'topojson-client'
 import Region from '../mixins/Region'
 
 export default {
@@ -33,7 +33,7 @@ export default {
     }
   },
   watch: {
-    data (val) {
+    data () {
       this.update()
     }
   },

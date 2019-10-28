@@ -4,10 +4,8 @@
 
 <script>
 import * as d3 from 'd3'
-import Text from './Text.vue'
 
 export default {
-  components: { 'd3-text': Text },
   props: {
     title: {
       type: String,
@@ -40,7 +38,7 @@ export default {
   },
   computed: {
     axis () {
-      const { orientation, scale, options, config } = this
+      const { orientation, scale, config } = this
       const axis = d3[`axis${orientation}`](scale)
       if (config) config(axis)
       return axis
@@ -50,13 +48,13 @@ export default {
     axis (val) {
       d3.select(this.$el).transition().call(val)
     },
-    title (val) {
+    title () {
       this.update()
     }
   },
   methods: {
     update () {
-      const { title, orientation, axis, options } = this
+      const { title, orientation, axis } = this
       const g = d3.select(this.$el).call(axis)
 
       if (title) {

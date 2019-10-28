@@ -16,11 +16,11 @@ export default {
       default: 20
     },
     dx: {
-      type: Number | String,
+      type: [Number, String],
       required: false
     },
     dy: {
-      type: Number | String,
+      type: [Number, String],
       required: false
     },
     rotate: {
@@ -40,6 +40,8 @@ export default {
     transform () {
       if (this.rotate) {
         return `rotate(${this.rotate})`
+      } else {
+        return null
       }
     }
   }
