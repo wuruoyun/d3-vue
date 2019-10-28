@@ -8,15 +8,15 @@ export default {
       default: () => []
     },
     x: {
-      type: String | Function,
+      type: [String, Function],
       default: 'x'
     },
     y: {
-      type: String | Function,
+      type: [String, Function],
       default: 'y'
     },
     k: {
-      type: String | Function,
+      type: [String, Function],
       required: false
     }
   },

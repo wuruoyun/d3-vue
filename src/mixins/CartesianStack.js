@@ -9,7 +9,7 @@ export default {
       default: () => []
     },
     x: {
-      type: String | Function,
+      type: [String, Function],
       default: 'x'
     },
     keys: {
