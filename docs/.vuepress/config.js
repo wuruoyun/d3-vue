@@ -6,7 +6,7 @@ module.exports = {
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Components', link: '/components/' },
-      { text: 'Github', link: 'https://github.com/wuruoyun/vue-component-lib-starter' },
+      { text: 'Github', link: 'https://github.com/wuruoyun/d3-vue' },
     ],
     sidebar: [
       {
