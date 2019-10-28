@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/54bae512-b505-496d-bbcf-e0c34e54c4b8/deploy-status)](https://app.netlify.com/sites/naughty-hugle-b3dc24/deploys)
+
 # d3-vue
 
 > A Vue component library for visualization with [D3](https://d3js.org/).
