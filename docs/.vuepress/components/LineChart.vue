@@ -1,16 +1,20 @@
 <template>
   <d3-cartesian class="demo" :margin="margin" :width="860" :height="450" :x="x" :y="y">
-    <template slot-scope="props">
+    <template #default="props">
       <d3-line v-for="city in cities" :key="city.id" :data="city.values" x="date" y="temperature"
         :color="city.color" :curveFn ="curveFn" v-bind="props"/>
     </template>
-    <template slot="east" slot-scope="props">
+    <template #east="props">
       <d3-text v-for="city in cities" :key="city.id" style="font:10px sans-serif;" :x="3"
         :y="props.scale(city.values[city.values.length - 1].temperature)" dy="0.35em">
         {{ city.id }}</d3-text>
     </template>
-    <d3-axis slot="south" class="axis--x" orientation="Bottom" slot-scope="props" v-bind="props"/>
-    <d3-axis slot="west" orientation="Left" title="Temperature, ºF" slot-scope="props" v-bind="props"/>
+    <template #south="props">
+      <d3-axis class="axis--x" orientation="Bottom" v-bind="props"/>
+    </template>
+    <template #west="props">
+      <d3-axis orientation="Left" title="Temperature, ºF" v-bind="props"/>
+    </template>
   </d3-cartesian>
 </template>
 

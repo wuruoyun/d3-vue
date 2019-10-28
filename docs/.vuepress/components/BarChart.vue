@@ -1,8 +1,14 @@
 <template>
   <d3-cartesian class="demo" :width="860" :height="450" :x="x" :y="y">
-    <d3-bars :data="data" x="letter" y="frequency" slot-scope="props" v-bind="props"/>
-    <d3-axis slot="south" class="axis--x" orientation="Bottom" slot-scope="props" v-bind="props"/>
-    <d3-axis slot="west" orientation="Left" :config="configY" slot-scope="props" v-bind="props"/>
+    <template #default="props">
+      <d3-bars :data="data" x="letter" y="frequency" v-bind="props"/>
+    </template>
+    <template #south="props">
+      <d3-axis class="axis--x" orientation="Bottom" v-bind="props"/>
+    </template>
+    <template #west="props">
+      <d3-axis orientation="Left" :config="configY" v-bind="props"/>
+    </template>
   </d3-cartesian>
 </template>
 

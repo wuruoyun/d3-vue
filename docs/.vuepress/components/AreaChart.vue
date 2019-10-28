@@ -1,8 +1,14 @@
 <template>
   <d3-cartesian :width="860" :height="450" :x="x" :y="y">
-    <d3-area :data="data" x="date" y="close" slot-scope="props" v-bind="props"/>
-    <d3-axis slot="south" orientation="Bottom" slot-scope="props" v-bind="props"/>
-    <d3-axis slot="west" orientation="Left" title="Price ($)" slot-scope="props" v-bind="props"/>
+    <template #default="props">
+      <d3-area :data="data" x="date" y="close" v-bind="props"/>
+    </template>
+    <template #south="props">
+      <d3-axis orientation="Bottom" v-bind="props"/>
+    </template>
+    <template #west="props">
+      <d3-axis orientation="Left" title="Price ($)" v-bind="props"/>
+    </template>
   </d3-cartesian>
 </template>
 

@@ -1,13 +1,19 @@
 <template>
   <div class = "demo">
     <d3-cartesian :width="860" :height="450" :x="x" :y="y">
-      <d3-bars :data="dataZoomed" x="date" y="price" slot-scope="props" v-bind="props"/>
-      <d3-axis slot="south" class="axis--x" orientation="Bottom" :config="configX"
-        slot-scope="props" v-bind="props"/>
-      <d3-axis slot="west" orientation="Left" slot-scope="props" v-bind="props"/>
+      <template #default="props">
+        <d3-bars :data="dataZoomed" x="date" y="price" v-bind="props"/>
+      </template>
+      <template #south="props">
+        <d3-axis class="axis--x" orientation="Bottom" :config="configX"
+          v-bind="props"/>
+      </template>
+      <template #west="props">
+        <d3-axis orientation="Left" v-bind="props"/>
+      </template>
     </d3-cartesian>
     <d3-cartesian class="navigator" :width="860" :height="100" :x="x2" :y="y">
-      <template slot-scope="props">
+      <template #default="props">
         <d3-bars :data="data" x="date" y="price" v-bind="props"/>
         <d3-brush ref="brush" orientation="x" @brush="brushed" @end="brushed" v-bind="props"/>
       </template>

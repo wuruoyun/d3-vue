@@ -1,11 +1,15 @@
 <template>
   <d3-cartesian class="demo" :width="860" :height="450" :x="x" :y="y">
-    <template slot-scope="props">
+    <template #default="props">
       <d3-points :data="data" x="sepalWidth" y="sepalLength" :color="colorFn" :size="3.5" v-bind="props"/>
       <d3-legend :data="species" label="name" color="color" align="right" :x="800"/>
     </template>
-    <d3-axis slot="south" orientation="Bottom" title="Sepal Width (cm)" slot-scope="props" v-bind="props"/>
-    <d3-axis slot="west" orientation="Left" title="Sepal Length (cm)" slot-scope="props" v-bind="props"/>
+    <template #south="props">
+      <d3-axis orientation="Bottom" title="Sepal Width (cm)" v-bind="props"/>
+    </template>
+    <template #west="props">
+      <d3-axis orientation="Left" title="Sepal Length (cm)" v-bind="props"/>
+    </template>
   </d3-cartesian>
 </template>
 

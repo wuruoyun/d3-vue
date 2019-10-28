@@ -1,12 +1,16 @@
 <template>
   <d3-cartesian class="demo" :margin="margin" :width="860" :height="450" :x="x" :y="y">
-    <template slot-scope="props">
+    <template #default="props">
       <d3-line :data="data" x="x" y="y" :definedFn="d => d" v-bind="props"/>
       <d3-area :data="data" x="x" y="y" :definedFn="d => d" v-bind="props"/>
       <d3-points :data="filtered" x="x" y="y" :size="3.5" v-bind="props"/>
     </template>
-    <d3-axis slot="south" orientation="Bottom" slot-scope="props" v-bind="props"/>
-    <d3-axis slot="west" orientation="Left" slot-scope="props" v-bind="props"/>
+    <template #south="props">
+      <d3-axis orientation="Bottom" v-bind="props"/>
+    </template>
+    <template #west="props">
+      <d3-axis orientation="Left" v-bind="props"/>
+    </template>
   </d3-cartesian>
 </template>
 

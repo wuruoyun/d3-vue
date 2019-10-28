@@ -1,12 +1,16 @@
 <template>
   <d3-cartesian class="demo" :margin="margin" :width="860" :height="450" :x="x" :y="y">
-    <template slot-scope="props">
+    <template #default="props">
       <d3-grouped-bars :data="data" x="State" :keys="keys" :colorFn="colorFn" v-bind="props"/>
       <d3-legend class="legend" :data="legendItems" label="name" color="color" align="right" :x="800"/>
     </template>
-    <d3-axis slot="south" orientation="Bottom" slot-scope="props" v-bind="props"/>
-    <d3-axis slot="west" orientation="Left" :config="configY" title="Population"
-      slot-scope="props" v-bind="props"/>
+    <template #south="props">
+      <d3-axis orientation="Bottom" v-bind="props"/>
+    </template>
+    <template #west="props">
+      <d3-axis orientation="Left" :config="configY" title="Population"
+        v-bind="props"/>
+    </template>
   </d3-cartesian>
 </template>
 

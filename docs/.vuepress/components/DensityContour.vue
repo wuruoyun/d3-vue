@@ -1,10 +1,17 @@
 <template>
   <d3-cartesian class="demo" :width="860" :height="550" :x="x" :y="y">
-    <d3-contour :data="data" x="carat" y="price" :colorFn="colorFn" slot-scope="props" v-bind="props"/>
-    <d3-axis slot="south" orientation="Bottom" title="Carats" titleLastTick :config="configX"
-      slot-scope="props" v-bind="props"/>
-    <d3-axis slot="west" orientation="Left" title="Price (USD)" titleLastTick :config="configY"
-      slot-scope="props" v-bind="props"/>
+    <template #default="props">
+      <d3-contour :data="data" x="carat" y="price" :colorFn="colorFn"
+        v-bind="props"/>
+    </template>
+    <template #south="props">
+      <d3-axis orientation="Bottom" title="Carats" titleLastTick :config="configX"
+        v-bind="props"/>
+    </template>
+    <template #west="props">
+      <d3-axis orientation="Left" title="Price (USD)" titleLastTick :config="configY"
+        v-bind="props"/>
+    </template>
   </d3-cartesian>
 </template>
 

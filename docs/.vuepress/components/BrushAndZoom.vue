@@ -2,16 +2,24 @@
   <div class="demo">
     <d3-cartesian ref="cartesian" :margin="margin" :width="860" :height="350"
       :x="x" :y="y" zoom="x" @zoom="zoomed">
-      <d3-area :data="data" x="date" y="price" :curveFn ="curveFn" slot-scope="props" v-bind="props"/>
-      <d3-axis slot="south" orientation="Bottom" slot-scope="props" v-bind="props"/>
-      <d3-axis slot="west" orientation="Left" slot-scope="props" v-bind="props"/>
+      <template #default="props">
+        <d3-area :data="data" x="date" y="price" :curveFn ="curveFn" v-bind="props"/>
+      </template>
+      <template #south="props">
+        <d3-axis orientation="Bottom" v-bind="props"/>
+      </template>
+      <template #west="props">
+        <d3-axis orientation="Left" v-bind="props"/>
+      </template>
     </d3-cartesian>
     <d3-cartesian :margin="margin" :width="860" :height="100" :x="x2" :y="y">
-      <template slot-scope="props">
+      <template #default="props">
         <d3-area :data="data" x="date" y="price" :curveFn ="curveFn" v-bind="props"/>
         <d3-brush ref="brush" orientation="x" @brush="brushed" @end="brushed" v-bind="props"/>
       </template>
-      <d3-axis slot="south" orientation="Bottom" slot-scope="props" v-bind="props"/>
+      <template #south="props">
+        <d3-axis orientation="Bottom" v-bind="props"/>
+      </template>
     </d3-cartesian>
   </div>
 </template>

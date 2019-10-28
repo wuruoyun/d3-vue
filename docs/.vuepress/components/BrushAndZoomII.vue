@@ -1,14 +1,19 @@
 <template>
-  <d3-cartesian ref="cartesian" class="demo" :margin="margin" :width="width" :height="height" :x="x" :y="y">
-    <template slot-scope="props">
-      <d3-points :data="data" :x="d => d[0]" :y="d => d[1]" :color="colorFn" :size="2.5"
-        animated v-bind="props"/>
-      <d3-brush ref="brush" orientation="xy" @end="brushEnd" v-bind="props"/>/>
+  <d3-cartesian ref="cartesian" class="demo" :margin="margin" :width="width"
+    :height="height" :x="x" :y="y">
+    <template #default="props">
+      <d3-points :data="data" :x="d => d[0]" :y="d => d[1]" :color="colorFn"
+        :size="2.5" animated v-bind="props"/>
+      <d3-brush ref="brush" orientation="xy" @end="brushEnd" v-bind="props"/>
     </template>
-    <d3-axis slot="south" orientation="Top" transform="translate(0,-10)" :config="configX"
-      slot-scope="props" v-bind="props"/>
-    <d3-axis slot="west" orientation="Right" transform="translate(10,0)" :config="configY"
-      slot-scope="props" v-bind="props"/>
+    <template #south="props">
+      <d3-axis orientation="Top" transform="translate(0,-10)" :config="configX"
+        v-bind="props"/>
+    </template>
+    <template #west="props">
+      <d3-axis orientation="Right" transform="translate(10,0)" :config="configY"
+        v-bind="props"/>
+    </template>
   </d3-cartesian>
 </template>
 

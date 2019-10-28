@@ -1,11 +1,15 @@
 <template>
   <d3-cartesian class="demo" :margin="margin" :width="860" :height="450" :x="x" :y="y">
-    <template slot-scope="props">
+    <template #default="props">
       <d3-grid-lines orientation="Horizontal" v-bind="props"/>
       <d3-candle-sticks :data="data" v-bind="props"/>
     </template>
-    <d3-axis slot="south" orientation="Bottom" :config="configX" slot-scope="props" v-bind="props"/>
-    <d3-axis slot="west" orientation="Left" :config="configY" slot-scope="props" v-bind="props"/>
+    <template #south="props">
+      <d3-axis orientation="Bottom" :config="configX" v-bind="props"/>
+    </template>
+    <template #west="props">
+      <d3-axis orientation="Left" :config="configY" v-bind="props"/>
+    </template>
   </d3-cartesian>
 </template>
 

@@ -1,9 +1,15 @@
 <template>
   <d3-cartesian :margin="margin" :width="860" :height="450" :x="x" :y="y">
-    <d3-stacked-area :data="data" x="date" :keys="keys" :colorFn="colorFn"
-      slot-scope="props" v-bind="props"/>
-    <d3-axis slot="south" orientation="Bottom" slot-scope="props" v-bind="props"/>
-    <d3-axis slot="west" orientation="Left" :config="configX" slot-scope="props" v-bind="props"/>
+    <template #default="props">
+      <d3-stacked-area :data="data" x="date" :keys="keys" :colorFn="colorFn"
+        v-bind="props"/>
+    </template>
+    <template #south="props">
+      <d3-axis orientation="Bottom" v-bind="props"/>
+    </template>
+    <template #west="props">
+      <d3-axis orientation="Left" :config="configX" v-bind="props"/>
+    </template>
   </d3-cartesian>
 </template>
 
