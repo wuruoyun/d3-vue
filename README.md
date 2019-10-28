@@ -4,7 +4,7 @@
 
 > A Vue component library for visualization with [D3](https://d3js.org/).
 
-This library is an attempt to bring the simplicity of Vue and power of D3 together.
+Documentation at [here](https://naughty-hugle-b3dc24.netlify.com/)
 
 ## Build Setup
 
