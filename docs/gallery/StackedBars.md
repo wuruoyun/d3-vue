@@ -2,6 +2,8 @@
 
 Original D3 demo at [https://bl.ocks.org/mbostock/3886208](https://bl.ocks.org/mbostock/3886208)
 
-<stacked-bars/>
+<client-only>
+  <stacked-bars/>
+</client-only>
 
 <<< @/docs/.vuepress/components/StackedBars.vue

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "vue-cli-service build --target lib --name d3-vue ./src/components/Axis.vue",
+    "build": "vue-cli-service build --target lib --name d3-vue ./src/index.js",
     "lint": "vue-cli-service lint",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs"
