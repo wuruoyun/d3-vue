@@ -1,7 +1,6 @@
 {
-  "name": "d3-vue",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@wuruoyun/d3-vue",
+  "version": "0.3.0",
   "scripts": {
     "build": "vue-cli-service build --target lib --name d3-vue ./src/index.js",
     "lint": "vue-cli-service lint",

@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head><title>Demo app</title></head>
+  <head><title>Simple Client Demo</title></head>
   <body>
     <div id="app">
-      <p>Component A: <component-a/></p>
-      <p>Component B: <component-b @click="onClick"/></p>
+      <d3-cartesian :x="x" :y="y" :width="600" :height="300">
+        <template #default="props">
+          <d3-area :data="points" v-bind="props"/>
+        </template>
+        <template #south="props">
+          <d3-axis v-bind="props"/>
+        </template>
+        <template #west="props">
+          <d3-axis orientation="Left" v-bind="props"/>
+        </template>
+      </d3-cartesian>
     </div>
   </body>
 
-  <script src="https://unpkg.com/vue"></script>
-  <script src="dist/my-lib.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://d3js.org/d3.v5.js"></script>
+  <script src="dist/d3-vue.umd.js"></script>
   <script>
-      console.log(window['my-lib'])
       var app = new Vue({
         el: '#app',
-        methods: {
-          onClick (message) {
-            alert(message)
+        data: {
+          x: { type: 'Linear', domain: [0, 10] },
+          y: { type: 'Linear', domain: [0, 10] },
+          points: []
+        },
+        created () {
+          for (let i = 0; i <= 10; i++) {
+            this.points.push({x: i, y: Math.random() * 10})
           }
         }
       })
